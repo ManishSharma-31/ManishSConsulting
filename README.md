@@ -67,17 +67,17 @@ The Web3Forms key is safe to expose in the browser. It only permits submissions 
 
 ```mermaid
 flowchart LR
-    V[Visitor browser] -->|HTTPS| N[Nitro server]
-    G[Googlebot] -->|HTTPS| N
-    N --> S[server.ts<br/>SSR error wrapper]
-    S --> T[TanStack Start<br/>router + SSR]
-    T --> R[Route components<br/>src/routes]
-    R --> C[Content files<br/>src/content]
-    R --> L[SEO helpers<br/>src/lib/seo.ts, schema.ts]
-    T -->|HTML + JSON-LD| V
-    T -->|sitemap.xml| G
-    V -->|form POST| W[(Web3Forms API)]
-    W -->|email| I[info@manishsconsulting.tech]
+    V["Visitor browser"] -->|HTTPS| N["Nitro server"]
+    G["Googlebot"] -->|HTTPS| N
+    N --> S["server.ts<br/>SSR error wrapper"]
+    S --> T["TanStack Start<br/>router + SSR"]
+    T --> R["Route components<br/>src/routes"]
+    R --> C["Content files<br/>src/content"]
+    R --> L["SEO helpers<br/>src/lib/seo.ts, schema.ts"]
+    T -->|"HTML + JSON-LD"| V
+    T -->|"sitemap.xml"| G
+    V -->|"form POST"| W[("Web3Forms API")]
+    W -->|email| I["info@manishsconsulting.tech"]
 ```
 
 Pages are rendered on the server, so crawlers receive complete HTML with titles, canonical links and structured data. The browser then hydrates the page into a normal React app.
@@ -113,20 +113,20 @@ Pages are rendered on the server, so crawlers receive complete HTML with titles,
 
 ```mermaid
 flowchart TD
-    H[Home /] --> SV[Services /services]
-    H --> WK[Work /work]
-    H --> AB[About /about]
-    H --> CT[Contact /contact]
-    SV --> S1[AI /services/ai]
-    SV --> S2[Automation /services/automation]
-    SV --> S3[Web Development /services/web-development]
-    SV --> S4[Cloud /services/cloud]
-    SV --> S5[DevOps /services/devops]
-    SV --> S6[IT Solutions /services/it-solutions]
-    WK --> C1[Case study /work/slug]
-    H -.footer.-> L1[Privacy /privacy]
-    H -.footer.-> L2[Terms /terms]
-    H -.footer.-> L3[Cookies /cookies]
+    H["Home /"] --> SV["Services /services"]
+    H --> WK["Work /work"]
+    H --> AB["About /about"]
+    H --> CT["Contact /contact"]
+    SV --> S1["AI /services/ai"]
+    SV --> S2["Automation /services/automation"]
+    SV --> S3["Web Development /services/web-development"]
+    SV --> S4["Cloud /services/cloud"]
+    SV --> S5["DevOps /services/devops"]
+    SV --> S6["IT Solutions /services/it-solutions"]
+    WK --> C1["Case study /work/slug"]
+    H -.footer.-> L1["Privacy /privacy"]
+    H -.footer.-> L2["Terms /terms"]
+    H -.footer.-> L3["Cookies /cookies"]
 ```
 
 | Route | Source file |
@@ -144,15 +144,15 @@ Service and case-study pages are generated from the data files in `src/content`,
 
 ```mermaid
 flowchart TD
-    A[Visitor submits form] --> B{Honeypot<br/>field filled?}
-    B -->|Yes| X[Ignore silently]
-    B -->|No| C{VITE_WEB3FORMS_KEY<br/>set?}
-    C -->|No| M[Open mailto: link<br/>to info@manishsconsulting.tech]
-    C -->|Yes| D[POST to api.web3forms.com]
-    D --> E{success?}
-    E -->|Yes| F[Show thank-you message<br/>and reset form]
-    E -->|No| G[Show error message<br/>with email address]
-    D -.-> H[Email arrives in inbox]
+    A["Visitor submits form"] --> B{"Honeypot<br/>field filled?"}
+    B -->|Yes| X["Ignore silently"]
+    B -->|No| C{"VITE_WEB3FORMS_KEY<br/>set?"}
+    C -->|No| M["Open mailto: link<br/>to info@manishsconsulting.tech"]
+    C -->|Yes| D["POST to api.web3forms.com"]
+    D --> E{"success?"}
+    E -->|Yes| F["Show thank-you message<br/>and reset form"]
+    E -->|No| G["Show error message<br/>with email address"]
+    D -.-> H["Email arrives in inbox"]
 ```
 
 WhatsApp is a plain link (`wa.me`) with a pre-filled message, defined as `whatsappUrl` in `src/content/site.ts`.
@@ -177,16 +177,16 @@ Case studies marked `isPlaceholder: true` are excluded from search indexing and 
 
 ```mermaid
 flowchart LR
-    P[Route head] --> H[seo helper]
-    H --> M[Title, description,<br/>canonical, robots]
-    H --> O[Open Graph<br/>and Twitter tags]
-    H --> J[JSON-LD]
-    J --> J1[Business + WebSite<br/>home]
-    J --> J2[FAQPage<br/>home]
-    J --> J3[Service<br/>service pages]
-    J --> J4[BreadcrumbList<br/>inner pages]
-    X[sitemap.xml] --> I[Search engines]
-    Y[robots.txt] --> I
+    P["Route head"] --> H["seo helper"]
+    H --> M["Title, description,<br/>canonical, robots"]
+    H --> O["Open Graph<br/>and Twitter tags"]
+    H --> J["JSON-LD"]
+    J --> J1["Business + WebSite<br/>home"]
+    J --> J2["FAQPage<br/>home"]
+    J --> J3["Service<br/>service pages"]
+    J --> J4["BreadcrumbList<br/>inner pages"]
+    X["sitemap.xml"] --> I["Search engines"]
+    Y["robots.txt"] --> I
     M --> I
     O --> I
     J --> I
@@ -202,11 +202,11 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    A[Push code] --> B[npm install]
-    B --> C[npm run build]
-    C --> D[.output/]
-    D --> E[Host runs<br/>node .output/server/index.mjs]
-    E --> F[manishsconsulting.tech]
+    A["Push code"] --> B["npm install"]
+    B --> C["npm run build"]
+    C --> D[".output/"]
+    D --> E["Host runs<br/>node .output/server/index.mjs"]
+    E --> F["manishsconsulting.tech"]
 ```
 
 `npm run build` produces a Node server in `.output/`. Run it with:
