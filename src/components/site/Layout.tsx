@@ -10,7 +10,7 @@ export function Header() {
     <header className="glass fixed inset-x-0 top-0 z-50 border-b border-border">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:px-8">
         <Link to="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <img src="/logo-128.png" alt="Manish S Consulting logo" width={44} height={44} className="size-11 rounded-lg object-cover" />
+          <img src="/logo-88.webp" alt="Manish S Consulting logo" width={44} height={44} className="size-11 rounded-lg object-cover" />
           <span className="font-display text-xl font-semibold tracking-tight md:text-2xl">
             Manish S<span className="text-muted-foreground"> Consulting</span>
           </span>
