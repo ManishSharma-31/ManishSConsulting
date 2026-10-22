@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { seo, breadcrumbLd } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
-import hero from "@/assets/hero.jpg";
+import hero from "@/assets/hero.webp";
 import { services } from "@/content/services";
 import { engagementModels } from "@/content/process";
 import { serviceImages } from "@/lib/images";

@@ -1,12 +1,12 @@
-import svcAi from "@/assets/svc-ai.jpg";
-import svcAutomation from "@/assets/svc-automation.jpg";
-import svcWeb from "@/assets/svc-web.jpg";
-import svcCloud from "@/assets/svc-cloud.jpg";
-import svcDevops from "@/assets/svc-devops.jpg";
-import svcIt from "@/assets/svc-it.jpg";
-import pPipeline from "@/assets/project-pipeline.jpg";
-import pTerraform from "@/assets/project-terraform.jpg";
-import pGo from "@/assets/project-go.jpg";
+import svcAi from "@/assets/svc-ai.webp";
+import svcAutomation from "@/assets/svc-automation.webp";
+import svcWeb from "@/assets/svc-web.webp";
+import svcCloud from "@/assets/svc-cloud.webp";
+import svcDevops from "@/assets/svc-devops.webp";
+import svcIt from "@/assets/svc-it.webp";
+import pPipeline from "@/assets/project-pipeline.webp";
+import pTerraform from "@/assets/project-terraform.webp";
+import pGo from "@/assets/project-go.webp";
 
 export const serviceImages: Record<string, string> = {
   ai: svcAi,

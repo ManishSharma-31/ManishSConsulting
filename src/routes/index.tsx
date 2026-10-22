@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { seo } from "@/lib/seo";
 import { organizationGraph, faqLd } from "@/lib/schema";
 import { ArrowUpRight, ArrowRight, Check, MapPin } from "lucide-react";
-import hero from "@/assets/hero.jpg";
+import hero from "@/assets/hero.webp";
 import { site, industries } from "@/content/site";
 import { services } from "@/content/services";
 import { projects } from "@/content/projects";
@@ -32,7 +32,7 @@ function Index() {
     <>
       {/* HERO */}
       <section className="relative min-h-[100svh] overflow-hidden">
-        <img src={hero} alt="" width={1600} height={1008} fetchPriority="high" decoding="async" className="absolute inset-0 size-full object-cover opacity-55" />
+        <img src={hero} alt="" width={1440} height={907} fetchPriority="high" decoding="async" className="absolute inset-0 size-full object-cover opacity-55" />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/20" />
         <div className="bg-fade absolute inset-x-0 bottom-0 h-48" />
         <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-5 pt-28 pb-16 md:px-8">

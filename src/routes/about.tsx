@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { seo, breadcrumbLd } from "@/lib/seo";
 import { pageLd } from "@/lib/schema";
 import { ArrowUpRight } from "lucide-react";
-import workspace from "@/assets/workspace.jpg";
+import workspace from "@/assets/workspace.webp";
 import { site } from "@/content/site";
 import { services } from "@/content/services";
 import { guarantees, notRightFor, processSteps } from "@/content/process";
