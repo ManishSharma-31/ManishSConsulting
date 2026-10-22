@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { services } from "@/content/services";
-import { projects, hasPlaceholderProjects } from "@/content/projects";
+import { projects } from "@/content/projects";
 import { absoluteUrl } from "@/lib/seo";
 
 type Entry = { path: string; priority: string; changefreq: string };
@@ -16,19 +16,22 @@ function entries(): Entry[] {
     { path: "/terms", priority: "0.2", changefreq: "yearly" },
     { path: "/cookies", priority: "0.2", changefreq: "yearly" },
   ];
-  // Demo case studies are noindex, so they stay out of the sitemap until they are real.
-  if (!hasPlaceholderProjects) {
-    list.push({ path: "/work", priority: "0.6", changefreq: "monthly" });
-    list.push(...projects.map((p) => ({ path: `/work/${p.slug}`, priority: "0.6", changefreq: "yearly" })));
-  }
+  list.splice(
+    list.findIndex((e) => e.path === "/about"),
+    0,
+    { path: "/work", priority: "0.8", changefreq: "monthly" },
+    ...projects.map((p) => ({ path: `/work/${p.slug}`, priority: "0.7", changefreq: "yearly" })),
+  );
   return list;
 }
+
+// Fixed when the server starts (each deploy), so crawlers are not told every page changed on every request.
+const lastmod = new Date().toISOString().slice(0, 10);
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: () => {
-        const lastmod = new Date().toISOString().slice(0, 10);
         const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${entries()

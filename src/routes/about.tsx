@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { seo, breadcrumbLd } from "@/lib/seo";
+import { pageLd } from "@/lib/schema";
 import { ArrowUpRight } from "lucide-react";
 import workspace from "@/assets/workspace.jpg";
 import { site } from "@/content/site";
@@ -14,7 +15,10 @@ export const Route = createFileRoute("/about")({
       description:
         "Manish S Consulting is an independent IT consultancy in Pune that builds software, automation and AI, and runs the cloud infrastructure underneath it. One accountable partner, fixed prices.",
       path: "/about",
-      jsonLd: breadcrumbLd([{ name: "Home", path: "/" }, { name: "About", path: "/about" }]),
+      jsonLd: [
+        pageLd("AboutPage", "About Manish S Consulting", "/about", "An independent IT consultancy in Pune that builds software, automation and AI, and runs the cloud infrastructure underneath it."),
+        breadcrumbLd([{ name: "Home", path: "/" }, { name: "About", path: "/about" }]),
+      ],
     }),
   component: AboutPage,
 });

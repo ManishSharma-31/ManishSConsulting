@@ -1,6 +1,7 @@
 import { site, siteUrl } from "@/content/site";
 import { services, type Service } from "@/content/services";
 import { faqs } from "@/content/faq";
+import type { Project } from "@/content/projects";
 import { absoluteUrl } from "@/lib/seo";
 
 const ORG_ID = `${siteUrl}/#organization`;
@@ -56,6 +57,51 @@ export const serviceLd = (s: Service) => ({
   url: absoluteUrl(`/services/${s.slug}`),
   provider: { "@id": ORG_ID },
   areaServed: [{ "@type": "Country", name: "India" }, "Worldwide"],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: `${s.name} capabilities`,
+    itemListElement: s.capabilities.map((c) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: c.name, description: c.detail },
+    })),
+  },
+});
+
+export const pageLd = (type: "AboutPage" | "ContactPage" | "CollectionPage", name: string, path: string, description: string) => ({
+  "@context": "https://schema.org",
+  "@type": type,
+  name,
+  description,
+  url: absoluteUrl(path),
+  isPartOf: { "@id": SITE_ID },
+  about: { "@id": ORG_ID },
+  inLanguage: "en-IN",
+});
+
+export const caseStudyLd = (p: Project) => ({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: p.title,
+  description: p.summary,
+  url: absoluteUrl(`/work/${p.slug}`),
+  mainEntityOfPage: absoluteUrl(`/work/${p.slug}`),
+  image: absoluteUrl("/og-image.png"),
+  datePublished: `${p.year}-01-01`,
+  author: { "@id": ORG_ID },
+  publisher: { "@id": ORG_ID },
+  keywords: p.tags.join(", "),
+  inLanguage: "en-IN",
+});
+
+export const workListLd = (projects: Project[]) => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: projects.map((p, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    url: absoluteUrl(`/work/${p.slug}`),
+    name: p.title,
+  })),
 });
 
 export const faqLd = (limit = 7) => ({

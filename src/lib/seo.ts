@@ -40,7 +40,11 @@ export function seo({ title, description, path, image = defaultOgImage, type = "
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: image },
     ],
-    links: [{ rel: "canonical", href: url }],
+    links: [
+      { rel: "canonical", href: url },
+      { rel: "alternate", hrefLang: "en-IN", href: url },
+      { rel: "alternate", hrefLang: "x-default", href: url },
+    ],
     scripts: jsonLd ? [{ type: "application/ld+json", children: serialise(jsonLd) }] : [],
   };
 }

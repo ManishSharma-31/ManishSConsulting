@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { seo } from "@/lib/seo";
+import { seo, breadcrumbLd } from "@/lib/seo";
+import { pageLd, workListLd } from "@/lib/schema";
 import { ArrowUpRight } from "lucide-react";
 import { projects, hasPlaceholderProjects } from "@/content/projects";
 import { projectImages } from "@/lib/images";
@@ -11,8 +12,11 @@ export const Route = createFileRoute("/work/")({
       title: "Case Studies | Manish S Consulting",
       description: "Example engagements showing how Manish S Consulting approaches DevOps, cloud and backend work.",
       path: "/work",
-      // Case studies are still demo placeholders; keep them out of the index until they are real.
-      noindex: hasPlaceholderProjects,
+      jsonLd: [
+        pageLd("CollectionPage", "Case Studies", "/work", "Example engagements showing how Manish S Consulting approaches DevOps, cloud and backend work."),
+        workListLd(projects),
+        breadcrumbLd([{ name: "Home", path: "/" }, { name: "Work", path: "/work" }]),
+      ],
     }),
   component: WorkPage,
 });
@@ -26,6 +30,11 @@ function WorkPage() {
         intro="Each case study starts with what was broken, explains what we changed, and ends with the result — measured, not adjectived."
       />
       <Section className="space-y-10">
+        {hasPlaceholderProjects && (
+          <p className="rounded-xl border border-dashed border-border px-4 py-3 text-sm text-muted-foreground">
+            These are illustrative engagements, representative of the work we do. Client details are confidential and figures are indicative.
+          </p>
+        )}
         {projects.map((p, i) => (
           <Link key={p.slug} to="/work/$slug" params={{ slug: p.slug }} className="group grid overflow-hidden rounded-3xl border border-border bg-card transition hover:border-primary/50 lg:grid-cols-2">
             <div className={`aspect-[3/2] overflow-hidden lg:aspect-auto ${i % 2 ? "lg:order-2" : ""}`}>

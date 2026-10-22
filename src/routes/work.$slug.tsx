@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { seo } from "@/lib/seo";
+import { seo, breadcrumbLd } from "@/lib/seo";
+import { caseStudyLd } from "@/lib/schema";
 import { ArrowLeft, Check } from "lucide-react";
 import { getProject } from "@/content/projects";
 import { getService } from "@/content/services";
@@ -19,7 +20,15 @@ export const Route = createFileRoute("/work/$slug")({
       title: `${p.title} | Case Study | Manish S Consulting`,
       description: p.summary,
       path: `/work/${p.slug}`,
-      noindex: p.isPlaceholder,
+      type: "article",
+      jsonLd: [
+        caseStudyLd(p),
+        breadcrumbLd([
+          { name: "Home", path: "/" },
+          { name: "Work", path: "/work" },
+          { name: p.title, path: `/work/${p.slug}` },
+        ]),
+      ],
     });
   },
   component: ProjectPage,
@@ -33,6 +42,11 @@ function ProjectPage() {
     <>
       <PageHero eyebrow={`Case study · ${p.clientContext}`} image={projectImages[p.slug]} title={p.title} intro={p.headline} />
       <Section>
+        {p.isPlaceholder && (
+          <p className="mb-8 rounded-xl border border-dashed border-border px-4 py-3 text-sm text-muted-foreground">
+            Illustrative engagement: representative of the work we do. Client details are confidential and figures are indicative.
+          </p>
+        )}
         <Link to="/work" className="mb-10 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"><ArrowLeft className="size-4" /> All work</Link>
         <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-3">
           {p.metrics.map((m) => (

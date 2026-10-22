@@ -82,6 +82,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Independent IT consultancy in Pune building AI, automation, web, cloud and DevOps systems." },
       { name: "author", content: "Manish Sharma" },
       { name: "theme-color", content: "#0a0a0a" },
+      ...(import.meta.env["VITE_GOOGLE_SITE_VERIFICATION"]
+        ? [{ name: "google-site-verification", content: import.meta.env["VITE_GOOGLE_SITE_VERIFICATION"] as string }]
+        : []),
+      ...(import.meta.env["VITE_BING_SITE_VERIFICATION"]
+        ? [{ name: "msvalidate.01", content: import.meta.env["VITE_BING_SITE_VERIFICATION"] as string }]
+        : []),
       { name: "application-name", content: "Manish S Consulting" },
       { name: "apple-mobile-web-app-title", content: "Manish S Consulting" },
       { property: "og:site_name", content: "Manish S Consulting" },
@@ -114,7 +120,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en-IN">
       <head>
         <HeadContent />
       </head>

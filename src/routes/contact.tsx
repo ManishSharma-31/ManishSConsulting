@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { seo, breadcrumbLd } from "@/lib/seo";
+import { pageLd } from "@/lib/schema";
 import { useState, type FormEvent } from "react";
 import { Mail, MessageCircle, MapPin, Clock, Send } from "lucide-react";
 import { site } from "@/content/site";
@@ -14,7 +15,10 @@ export const Route = createFileRoute("/contact")({
       description:
         "Tell Manish S Consulting about your project. Free 30-minute discovery call for AI, automation, web, cloud and DevOps work. Replies within 24 hours on weekdays.",
       path: "/contact",
-      jsonLd: breadcrumbLd([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }]),
+      jsonLd: [
+        pageLd("ContactPage", "Contact Manish S Consulting", "/contact", "Book a free 30-minute discovery call with Manish S Consulting."),
+        breadcrumbLd([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }]),
+      ],
     }),
   component: ContactPage,
 });

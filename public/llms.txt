@@ -1,0 +1,19 @@
+# Manish S Consulting
+
+> Independent IT consultancy in Pune, Maharashtra, India. We build AI solutions, automation, web applications, cloud infrastructure and DevOps for startups, SMBs and agencies. Fixed prices, written scope, one accountable partner.
+
+Website: https://manishsconsulting.tech
+Contact: info@manishsconsulting.tech
+
+## Services
+- [AI Solutions](https://manishsconsulting.tech/services/ai): knowledge assistants, document processing, LLM features, support automation
+- [Automation](https://manishsconsulting.tech/services/automation): integrations, workflow automation, internal tools, data pipelines
+- [Web Development](https://manishsconsulting.tech/services/web-development): web apps, APIs, marketing sites, e-commerce
+- [Cloud](https://manishsconsulting.tech/services/cloud): cloud architecture and migration
+- [DevOps](https://manishsconsulting.tech/services/devops): CI/CD, infrastructure as code, monitoring
+- [IT Solutions](https://manishsconsulting.tech/services/it-solutions): ongoing technical support
+
+## Pages
+- [About](https://manishsconsulting.tech/about)
+- [Case studies](https://manishsconsulting.tech/work)
+- [Contact](https://manishsconsulting.tech/contact)

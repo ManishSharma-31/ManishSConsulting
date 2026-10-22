@@ -32,7 +32,7 @@ function Index() {
     <>
       {/* HERO */}
       <section className="relative min-h-[100svh] overflow-hidden">
-        <img src={hero} alt="" width={1600} height={1008} className="absolute inset-0 size-full object-cover opacity-55" />
+        <img src={hero} alt="" width={1600} height={1008} fetchPriority="high" decoding="async" className="absolute inset-0 size-full object-cover opacity-55" />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/20" />
         <div className="bg-fade absolute inset-x-0 bottom-0 h-48" />
         <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-5 pt-28 pb-16 md:px-8">
@@ -42,7 +42,7 @@ function Index() {
             <span className="font-serif font-normal italic text-gradient">Systems that stay up.</span>
           </h1>
           <p className="animate-rise mt-8 max-w-2xl text-lg text-muted-foreground md:text-xl">
-            An independent IT consultancy for startups, SMBs and agencies. AI features, automation, web apps, cloud and
+            An independent IT consultancy in Pune, India for startups, SMBs and agencies. AI features, automation, web apps, cloud and
             DevOps — designed, built <em className="text-foreground not-italic">and</em> operated by the same engineer.
           </p>
           <div className="animate-rise mt-10 flex flex-wrap items-center gap-4">
