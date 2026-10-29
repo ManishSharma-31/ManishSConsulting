@@ -32,27 +32,39 @@ export type Faq = { category: FaqCategoryId; question: string; answer: string };
 export const faqs: Faq[] = [
   {
     category: "firm",
+    question: "What kinds of IT problems do you take on?",
+    answer:
+      "Most of them. The six service areas cover websites and software, cloud and infrastructure, delivery pipelines, automation, AI and everyday IT support, and the services page lists the specific work inside each. If your problem does not fit neatly in one of them, bring it to a free 30-minute call: we will either take it on or tell you who should.",
+  },
+  {
+    category: "firm",
+    question: "Do you work with individuals, or only companies?",
+    answer:
+      "Both. Individuals and freelancers hire us for things like a personal or portfolio site, a setup that will not behave, or advice before a purchase. Businesses of every size hire us for projects and ongoing support. The process is the same for everyone: a free call, a written scope and a fixed price.",
+  },
+  {
+    category: "firm",
+    question: "How do the six services fit together?",
+    answer:
+      "They are the layers one piece of technology runs on: the application people use, the cloud it is hosted on, the pipeline that releases it, the automation around it, any AI inside it, and the support that keeps it healthy. Because one person understands every layer, problems get solved end to end instead of bouncing between vendors. You can also hire us for just one layer.",
+  },
+  {
+    category: "firm",
+    question: "Where do you work, and can you work with us?",
+    answer:
+      "We work with clients anywhere in the world. Work is remote by default and in writing, so progress does not depend on being online at the same time, and calls are scheduled around your time zone. If you need someone physically on site, a local provider is the better fit, and we are happy to work alongside them on the technical side.",
+  },
+  {
+    category: "firm",
     question: "Who will we actually be working with?",
     answer:
       "A senior engineer leads every engagement from first call to final handover, and vetted specialists join when a project calls for them. You speak directly with the people doing the work — no account managers, no hand-offs — and we cap the number of active projects so every client gets focused attention.",
   },
   {
     category: "firm",
-    question: "How do six services fit together?",
-    answer:
-      "They are not six unrelated disciplines — they are the stack that one product runs on. Cloud, DevOps, and infrastructure are where the deepest experience sits, with a measured result behind it: a production CI/CD rebuild that cut deployment time by 90%. Web, AI, and automation are built on the same engineering foundation. Because one partner understands the whole stack, problems get solved end to end instead of bouncing between vendors.",
-  },
-  {
-    category: "firm",
     question: "How are contracts and invoicing handled?",
     answer:
       "Every engagement starts with a clear written agreement covering scope, timeline, price, confidentiality and IP ownership. Invoices are issued against agreed milestones, and we are happy to work with your procurement process and vendor onboarding requirements.",
-  },
-  {
-    category: "firm",
-    question: "Do you work with clients outside India?",
-    answer:
-      "Yes, most work is remote. We are based in Pune on IST (UTC+5:30), which gives four or more hours of overlap with European teams and three or more with US East Coast teams. We work in writing by default so progress does not depend on being online at the same time, and keep a fixed window of later hours free for calls.",
   },
   {
     category: "firm",
@@ -70,7 +82,7 @@ export const faqs: Faq[] = [
     category: "process",
     question: "Which service should we start with?",
     answer:
-      "If you already know what you need, start there. If you do not, start with a fixed-price assessment — an AI readiness review, a cloud cost audit, or a delivery health check depending on where the pain is. It is one week, one price, and you get a written report and a roadmap whether or not you hire us for the work it recommends.",
+      "If you already know what you need, start there. If you do not, start with a fixed-price assessment — an AI readiness review, a cloud cost audit, a delivery health check or a general technology review, depending on where the pain is. It is one week, one price, and you get a written report and a roadmap whether or not you hire us for the work it recommends.",
   },
   {
     category: "process",
@@ -112,7 +124,7 @@ export const faqs: Faq[] = [
     category: "terms",
     question: "What if you are not the right fit?",
     answer:
-      "We will tell you on the discovery call, and we have turned down work before. Every service page on this site has a section about what we do not do, for exactly this reason. Where we can, we will point you toward someone better suited.",
+      "We will tell you on the discovery call. Every service page on this site has a section about what we do not do, for exactly this reason. Where we can, we will point you toward someone better suited.",
   },
 ];
 

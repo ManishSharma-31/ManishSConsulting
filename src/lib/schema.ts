@@ -6,6 +6,7 @@ import { absoluteUrl } from "@/lib/seo";
 
 const ORG_ID = `${siteUrl}/#organization`;
 const SITE_ID = `${siteUrl}/#website`;
+const PERSON_ID = `${siteUrl}/#founder`;
 
 /** Sitewide entity graph: who the business is, and that this site is its official one. Used on the home page. */
 export const organizationGraph = () => ({
@@ -21,14 +22,19 @@ export const organizationGraph = () => ({
       image: absoluteUrl("/og-image.png"),
       description: site.description,
       email: site.email,
-      founder: { "@type": "Person", name: site.legal.contractingParty },
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: site.city,
-        addressRegion: site.region,
-        addressCountry: site.country,
-      },
-      areaServed: [{ "@type": "Country", name: "India" }, "Worldwide"],
+      telephone: site.phone,
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: "sales",
+          telephone: site.phone,
+          email: site.email,
+          availableLanguage: ["English"],
+          areaServed: "Worldwide",
+        },
+      ],
+      founder: { "@id": PERSON_ID },
+      areaServed: "Worldwide",
       knowsAbout: services.map((s) => s.name),
       sameAs: [site.socials.github, site.socials.linkedin],
       makesOffer: services.map((s) => ({
@@ -37,12 +43,22 @@ export const organizationGraph = () => ({
       })),
     },
     {
+      "@type": "Person",
+      "@id": PERSON_ID,
+      name: site.legal.contractingParty,
+      jobTitle: "Founder and principal consultant",
+      url: absoluteUrl("/about"),
+      image: absoluteUrl("/profile-1000.jpg"),
+      worksFor: { "@id": ORG_ID },
+      sameAs: [site.socials.github, site.socials.linkedin],
+    },
+    {
       "@type": "WebSite",
       "@id": SITE_ID,
       url: absoluteUrl("/"),
       name: site.name,
       alternateName: "Manish S Consulting",
-      inLanguage: "en-IN",
+      inLanguage: "en",
       publisher: { "@id": ORG_ID },
     },
   ],
@@ -56,7 +72,7 @@ export const serviceLd = (s: Service) => ({
   description: s.summary,
   url: absoluteUrl(`/services/${s.slug}`),
   provider: { "@id": ORG_ID },
-  areaServed: [{ "@type": "Country", name: "India" }, "Worldwide"],
+  areaServed: "Worldwide",
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: `${s.name} capabilities`,
@@ -67,7 +83,7 @@ export const serviceLd = (s: Service) => ({
   },
 });
 
-export const pageLd = (type: "AboutPage" | "ContactPage" | "CollectionPage", name: string, path: string, description: string) => ({
+export const pageLd = (type: "AboutPage" | "ContactPage" | "CollectionPage" | "FAQPage" | "WebPage", name: string, path: string, description: string) => ({
   "@context": "https://schema.org",
   "@type": type,
   name,
@@ -75,7 +91,7 @@ export const pageLd = (type: "AboutPage" | "ContactPage" | "CollectionPage", nam
   url: absoluteUrl(path),
   isPartOf: { "@id": SITE_ID },
   about: { "@id": ORG_ID },
-  inLanguage: "en-IN",
+  inLanguage: "en",
 });
 
 export const caseStudyLd = (p: Project) => ({
@@ -86,11 +102,11 @@ export const caseStudyLd = (p: Project) => ({
   url: absoluteUrl(`/work/${p.slug}`),
   mainEntityOfPage: absoluteUrl(`/work/${p.slug}`),
   image: absoluteUrl("/og-image.png"),
-  datePublished: `${p.year}-01-01`,
+  ...(/^\d{4}$/.test(p.year) ? { datePublished: `${p.year}-01-01` } : {}),
   author: { "@id": ORG_ID },
   publisher: { "@id": ORG_ID },
   keywords: p.tags.join(", "),
-  inLanguage: "en-IN",
+  inLanguage: "en",
 });
 
 export const workListLd = (projects: Project[]) => ({
@@ -101,6 +117,16 @@ export const workListLd = (projects: Project[]) => ({
     position: i + 1,
     url: absoluteUrl(`/work/${p.slug}`),
     name: p.title,
+  })),
+});
+
+export const faqPageLd = (items: { question: string; answer: string }[]) => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: items.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
   })),
 });
 

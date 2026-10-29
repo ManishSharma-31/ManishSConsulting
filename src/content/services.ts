@@ -9,9 +9,8 @@ import {
 } from "lucide-react";
 
 /**
- * Six services, presented as peers. AI leads because it is the flagship — it
- * appears first everywhere and carries the deepest page — but nothing in the
- * layout ranks the others below it.
+ * Six service areas, presented as peers and ordered from the most widely
+ * needed to the most specialist. Nothing in the layout ranks one above another.
  *
  * `name` is the plain, searchable label used in navigation, footers and form
  * dropdowns. `headline` is the outcome-led line used as the page H1.
@@ -24,10 +23,12 @@ export type Service = {
   headline: string;
   /** Keyword-led line that carries the search traffic. */
   subtitle: string;
+  /** <title> for the service page, 60 characters or fewer including the brand suffix. */
+  seoTitle: string;
+  /** Meta description, 160 characters or fewer. */
+  metaDescription: string;
   summary: string;
   icon: LucideIcon;
-  /** The flagship gets first position and the longest page. */
-  flagship?: boolean;
   /** The concrete things inside this service — what people actually buy. */
   capabilities: { name: string; detail: string }[];
   /** Circumstances where this service is the right call. */
@@ -47,201 +48,14 @@ export type Service = {
 };
 
 export const services: Service[] = [
-  /* ------------------------------------------------------------- Flagship */
-  {
-    slug: "ai",
-    name: "AI Solutions",
-    headline: "AI that does a specific job, not a demo",
-    subtitle: "AI development — LLM integration, chatbots, document processing, RAG",
-    summary:
-      "We build AI features that solve a named problem and can be measured: assistants trained on your own documentation, document processing that removes manual data entry, and LLM features inside your existing product.",
-    icon: Sparkles,
-    flagship: true,
-    capabilities: [
-      {
-        name: "Internal knowledge assistants",
-        detail:
-          "A chatbot that answers from your own documentation, policies, and past tickets rather than from the open internet — retrieval-augmented so answers cite their source and can be checked.",
-      },
-      {
-        name: "Document processing",
-        detail:
-          "Extract structured data from invoices, contracts, forms, and PDFs, with a confidence threshold and a human review queue for anything below it.",
-      },
-      {
-        name: "LLM features in your product",
-        detail:
-          "Summarisation, classification, drafting, and search built into software you already run, with cost controls and fallbacks so a provider outage does not take your product down.",
-      },
-      {
-        name: "Customer support automation",
-        detail:
-          "Triage and first-line responses that hand off cleanly to a person, with the handoff point tuned so customers are not trapped in a loop.",
-      },
-      {
-        name: "AI readiness assessment",
-        detail:
-          "A fixed-price review of where AI would genuinely pay for itself in your business, and — as often as not — where it would not.",
-      },
-    ],
-    idealFor: [
-      "A team drowning in a manual process that is mostly reading and re-typing",
-      "A product that needs an AI feature that actually ships, not a prototype",
-      "A business fielding the same customer questions hundreds of times a month",
-      "Anyone who has been quoted a large number for something that should be small",
-    ],
-    deliverables: [
-      "Working feature deployed into your environment, not a notebook",
-      "Evaluation set and accuracy measurements, so \"is it good enough\" has an answer",
-      "Cost-per-request modelling and usage limits before it goes live",
-      "Fallback behaviour for provider outages, rate limits, and low-confidence results",
-      "Documentation covering how it works, what it costs, and how to change the prompts",
-    ],
-    notFor: [
-      "Training foundation models from scratch — almost nobody needs this, and we will say so",
-      "\"Add AI\" with no problem attached; we will help you find the problem first, but we will not skip that step",
-      "Use cases where a wrong answer is unacceptable and there is no way to put a human in the loop",
-    ],
-    stance: {
-      claim: "Most AI projects fail on evaluation, not on modelling.",
-      detail:
-        "Getting a plausible answer out of a language model takes an afternoon. Knowing whether it is right often enough to put in front of customers takes an evaluation set, a threshold, and a fallback. Teams that skip that part ship something impressive in a demo and unusable in production.",
-    },
-    stack: ["Python", "Claude", "OpenAI", "Azure AI", "LangChain", "Vector databases", "FastAPI"],
-    typicalTimeline: "2-8 weeks depending on scope",
-    body: {
-      problem:
-        "AI is easy to buy and hard to get value from. The gap is rarely the model — it is that nobody defined what success looks like, so there is no way to tell whether the thing works. Projects stall in an endless prototype phase, or worse, ship without evaluation and quietly give customers wrong answers with total confidence.",
-      approach: [
-        {
-          title: "Start from the process, not the technology",
-          detail:
-            "We look at the actual manual work you want removed and how often it happens. If the honest answer is that a database query or a form would solve it better, that is what we will tell you.",
-        },
-        {
-          title: "Define what good looks like before building",
-          detail:
-            "An evaluation set of real examples with known correct answers. Without it, \"it seems to work\" is the only quality bar available, and it is not one you can defend to a customer.",
-        },
-        {
-          title: "Build the narrow version first",
-          detail:
-            "One use case, deployed, measured, in front of real users. Breadth comes after something is demonstrably working, not before.",
-        },
-        {
-          title: "Design for being wrong",
-          detail:
-            "Confidence thresholds, human review queues, graceful degradation when a provider is down. The failure path matters more than the happy path in anything customer-facing.",
-        },
-        {
-          title: "Control the cost before launch",
-          detail:
-            "Per-request cost modelled against realistic volume, with caching and limits in place. AI features that get expensive at scale are a business problem, not a technical one.",
-        },
-      ],
-      outcome:
-        "A feature doing a specific job, with numbers showing how well it does it and what it costs to run. You can decide whether to expand it on evidence rather than on enthusiasm.",
-    },
-  },
-  {
-    slug: "automation",
-    name: "Automation",
-    headline: "Stop paying people to move data between systems",
-    subtitle: "Business process automation, system integration, and internal tools",
-    summary:
-      "We remove the repetitive work: connecting systems that do not talk to each other, replacing spreadsheet handoffs, and building the internal tools your team has been asking for.",
-    icon: Workflow,
-    capabilities: [
-      {
-        name: "System integrations",
-        detail:
-          "Get your CRM, accounting, support desk, and internal database exchanging data reliably, with retries and alerting when a sync fails rather than silent divergence.",
-      },
-      {
-        name: "Workflow automation",
-        detail:
-          "Approvals, notifications, onboarding and offboarding sequences, scheduled reports — the multi-step processes currently held together by someone remembering to do them.",
-      },
-      {
-        name: "Internal tools and dashboards",
-        detail:
-          "Admin panels and operational dashboards so your team stops asking an engineer to run a query every time they need a number.",
-      },
-      {
-        name: "Data pipelines and reporting",
-        detail:
-          "Scheduled extraction, transformation and loading into somewhere your team can actually query, with monitoring so you find out when a job fails.",
-      },
-      {
-        name: "Document and file workflows",
-        detail:
-          "Generation, routing, storage and archival of documents that currently pass through an inbox and a shared drive.",
-      },
-    ],
-    idealFor: [
-      "A team where someone spends hours each week copying between two systems",
-      "A business that has outgrown running operations from spreadsheets",
-      "Companies whose tools each work fine but do not talk to one another",
-      "Any process that breaks whenever one particular person is on leave",
-    ],
-    deliverables: [
-      "Working automation running in your environment on a schedule or a trigger",
-      "Error handling, retries, and alerting so failures surface instead of accumulating",
-      "Logging you can audit when someone asks what happened to a record",
-      "Documentation and a walkthrough so your team can adjust it without us",
-      "An honest before-and-after estimate of the hours removed",
-    ],
-    notFor: [
-      "Processes still changing weekly — automate them once they have settled, or you will pay to rebuild",
-      "Work that happens twice a year; the automation will cost more than the work",
-      "Replacing a person's judgement rather than their typing",
-    ],
-    stance: {
-      claim: "Automate the process you have, not the process you wish you had.",
-      detail:
-        "The most common failure is redesigning the workflow at the same time as automating it. You end up debugging two changes at once and cannot tell which one broke. Automate the current process faithfully, get it stable, then improve it deliberately.",
-    },
-    stack: ["Python", "Go", "n8n", "REST & GraphQL APIs", "PostgreSQL", "MySQL", "AWS Lambda"],
-    typicalTimeline: "1-6 weeks per workflow",
-    body: {
-      problem:
-        "Manual process work is invisible on any budget line. Nobody has a cost centre called \"copying rows between systems\", so it never competes for attention — it just quietly consumes hours every week, introduces errors nobody catches until month end, and stops entirely when one particular person takes leave.",
-      approach: [
-        {
-          title: "Follow the process as it actually runs",
-          detail:
-            "We watch it happen and write down every step, including the exceptions people handle without thinking. The exceptions are where automation projects usually fail.",
-        },
-        {
-          title: "Count the hours honestly",
-          detail:
-            "How often it runs, how long it takes, what an error costs to fix. If the numbers do not justify the build, we will say so before you spend anything.",
-        },
-        {
-          title: "Automate the common path first",
-          detail:
-            "Cover the majority case and route the rest to a person. Chasing full coverage on day one is how these projects double in cost.",
-        },
-        {
-          title: "Make failure loud",
-          detail:
-            "Automation that fails silently is worse than the manual process, because nobody notices for weeks. Every workflow gets retries, alerting, and an audit log.",
-        },
-        {
-          title: "Hand over the controls",
-          detail:
-            "Your team should be able to change a threshold or a recipient without booking us. Where that is possible, we build it that way.",
-        },
-      ],
-      outcome:
-        "The work happens on its own, failures reach a human quickly, and the hours go back to your team. We will tell you the measured before-and-after rather than a projected one.",
-    },
-  },
   {
     slug: "web-development",
     name: "Web Development",
     headline: "Web applications built to be maintained, not just launched",
     subtitle: "Web development — React, Next.js, Node, Go, and API engineering",
+    seoTitle: "Website & Web Application Development | Manish S Consulting",
+    metaDescription:
+      "Custom websites, web apps, APIs and online stores built to be maintained, for individuals, businesses and teams. Fixed price, written scope.",
     summary:
       "Websites, web applications, and APIs built properly the first time: fast, accessible, tested, and deployed through a pipeline so the second release is as safe as the first.",
     icon: Globe,
@@ -332,10 +146,105 @@ export const services: Service[] = [
     },
   },
   {
+    slug: "it-solutions",
+    name: "IT Solutions & Support",
+    headline: "Technical judgement on call, without a full-time hire",
+    subtitle: "IT consulting, managed support, and technical due diligence",
+    seoTitle: "IT Consulting & Support Services | Manish S Consulting",
+    metaDescription:
+      "Managed IT support, technical advice and due diligence for businesses and individuals, without a full-time hire. Fixed price, written scope.",
+    summary:
+      "Ongoing IT help for businesses and individuals without in-house technical staff: maintenance, monitoring, upgrades, security hygiene, and someone to ask before decisions get made.",
+    icon: Headphones,
+    capabilities: [
+      {
+        name: "Managed maintenance",
+        detail:
+          "Dependency and security updates, certificate renewals, backup verification, and the upkeep that only becomes visible when it has been skipped for a year.",
+      },
+      {
+        name: "Technical advisory",
+        detail:
+          "Architecture decisions, vendor and build-versus-buy evaluations, and hiring input — available before the decision is made rather than after.",
+      },
+      {
+        name: "Technical due diligence",
+        detail:
+          "Independent review of a codebase or infrastructure you are about to acquire, invest in, or inherit, written for people who need to make a decision.",
+      },
+      {
+        name: "Security hygiene",
+        detail:
+          "Access review, secrets handling, dependency vulnerabilities, backup and restore testing, and the infrastructure answers procurement will ask for.",
+      },
+      {
+        name: "Inherited system rescue",
+        detail:
+          "Documenting and stabilising software nobody currently understands, so you have options other than a rewrite.",
+      },
+    ],
+    idealFor: [
+      "A business running critical software with no in-house engineer",
+      "Systems built by a contractor who is no longer available",
+      "Needing cover while you recruit for a technical role",
+      "Wanting an independent opinion before committing real money",
+    ],
+    deliverables: [
+      "An agreed number of days each month, planned with you at the start of it",
+      "Monitoring and alerting so problems surface before customers report them",
+      "Written monthly summary of what changed and what is coming",
+      "Documentation that accumulates through the engagement rather than arriving at the end",
+      "A named point of contact with context on your systems",
+    ],
+    notFor: [
+      "Round-the-clock on-call staffing — instead, we help you design a rotation and write the runbooks it depends on",
+      "Desktop, printer, and end-user helpdesk support; we work on systems, not workstations",
+      "Organisations large enough to need a staffed internal platform team",
+    ],
+    stance: {
+      claim: "A good retainer should shrink over time.",
+      detail:
+        "If you need the same number of days from us in month twelve as in month one, we have been maintaining a dependency rather than building capability. Every retainer we run has handover built into it.",
+    },
+    stack: ["AWS", "Linux", "Terraform", "Docker", "Grafana", "PostgreSQL", "MySQL"],
+    typicalTimeline: "Rolling monthly, cancel with 30 days' notice",
+    body: {
+      problem:
+        "Between having no technical needs and being able to justify a full-time engineering hire there is a long, awkward stretch. During it, critical systems have no owner, maintenance is deferred until it becomes an incident, and significant technical decisions get made by whoever is available rather than whoever knows.",
+      approach: [
+        {
+          title: "Understand the estate first",
+          detail:
+            "Before committing to a retainer, we document what you are actually running. Retainers that start without this turn into expensive guesswork.",
+        },
+        {
+          title: "Plan the month up front",
+          detail:
+            "We agree at the start of each month what the days go on. No open-ended time and no surprise invoices.",
+        },
+        {
+          title: "Fix causes, not tickets",
+          detail:
+            "Recurring work gets automated rather than repeated. The list of things needing us should get shorter.",
+        },
+        {
+          title: "Be available before decisions",
+          detail:
+            "The cheapest technical advice is given before the thing is built. Retainer clients get us in the conversation early.",
+        },
+      ],
+      outcome:
+        "Your systems have an owner, maintenance stops accumulating into incidents, and there is someone with context to ask before a decision gets made. When you do hire internally, they inherit a documented system rather than a mystery.",
+    },
+  },
+  {
     slug: "cloud",
     name: "Cloud",
-    headline: "Cloud infrastructure you can rebuild from code",
+    headline: "Cloud systems that stay reliable, affordable and rebuildable",
     subtitle: "AWS cloud architecture, migration, Terraform, and cost optimisation",
+    seoTitle: "Cloud Consulting & Migration Services | Manish S Consulting",
+    metaDescription:
+      "Cloud architecture, migration, infrastructure as code and cost optimisation on AWS, designed to be reliable and affordable. Fixed price, written scope.",
     summary:
       "Architecture, migration, and cost work on AWS — with everything defined in Terraform so environments are reproducible and changes get reviewed like code.",
     icon: Cloud,
@@ -428,8 +337,11 @@ export const services: Service[] = [
   {
     slug: "devops",
     name: "DevOps",
-    headline: "Ship on every merge, not every Friday",
+    headline: "Release software calmly, as often as you like",
     subtitle: "DevOps consulting — CI/CD pipelines, Kubernetes, and observability",
+    seoTitle: "DevOps & CI/CD Consulting | Manish S Consulting",
+    metaDescription:
+      "CI/CD pipelines, containers, monitoring and release safety so your software ships often and safely. Fixed price, written scope.",
     summary:
       "Replace the manual release ritual with a pipeline that builds, tests, and deploys on merge — with monitoring that tells you something is wrong before a customer does.",
     icon: InfinityIcon,
@@ -520,100 +432,202 @@ export const services: Service[] = [
     },
   },
   {
-    slug: "it-solutions",
-    name: "IT Solutions & Support",
-    headline: "Technical judgement on call, without a full-time hire",
-    subtitle: "IT consulting, managed support, and technical due diligence",
+    slug: "automation",
+    name: "Automation",
+    headline: "Stop paying people to move data between systems",
+    subtitle: "Business process automation, system integration, and internal tools",
+    seoTitle: "Business Process Automation | Manish S Consulting",
+    metaDescription:
+      "Automate repetitive work with system integrations, workflows, internal tools and data pipelines for any business. Fixed price, written scope.",
     summary:
-      "Ongoing technical capacity for businesses without an in-house engineering lead: maintenance, monitoring, upgrades, security hygiene, and someone to ask before decisions get made.",
-    icon: Headphones,
+      "We remove the repetitive work: connecting systems that do not talk to each other, replacing spreadsheet handoffs, and building the internal tools your team has been asking for.",
+    icon: Workflow,
     capabilities: [
       {
-        name: "Managed maintenance",
+        name: "System integrations",
         detail:
-          "Dependency and security updates, certificate renewals, backup verification, and the upkeep that only becomes visible when it has been skipped for a year.",
+          "Get your CRM, accounting, support desk, and internal database exchanging data reliably, with retries and alerting when a sync fails rather than silent divergence.",
       },
       {
-        name: "Technical advisory",
+        name: "Workflow automation",
         detail:
-          "Architecture decisions, vendor and build-versus-buy evaluations, and hiring input — available before the decision is made rather than after.",
+          "Approvals, notifications, onboarding and offboarding sequences, scheduled reports — the multi-step processes currently held together by someone remembering to do them.",
       },
       {
-        name: "Technical due diligence",
+        name: "Internal tools and dashboards",
         detail:
-          "Independent review of a codebase or infrastructure you are about to acquire, invest in, or inherit, written for people who need to make a decision.",
+          "Admin panels and operational dashboards so your team stops asking an engineer to run a query every time they need a number.",
       },
       {
-        name: "Security hygiene",
+        name: "Data pipelines and reporting",
         detail:
-          "Access review, secrets handling, dependency vulnerabilities, backup and restore testing, and the infrastructure answers procurement will ask for.",
+          "Scheduled extraction, transformation and loading into somewhere your team can actually query, with monitoring so you find out when a job fails.",
       },
       {
-        name: "Inherited system rescue",
+        name: "Document and file workflows",
         detail:
-          "Documenting and stabilising software nobody currently understands, so you have options other than a rewrite.",
+          "Generation, routing, storage and archival of documents that currently pass through an inbox and a shared drive.",
       },
     ],
     idealFor: [
-      "A business running critical software with no in-house engineer",
-      "Systems built by a contractor who is no longer available",
-      "Needing cover while you recruit for a technical role",
-      "Wanting an independent opinion before committing real money",
+      "A team where someone spends hours each week copying between two systems",
+      "A business that has outgrown running operations from spreadsheets",
+      "Companies whose tools each work fine but do not talk to one another",
+      "Any process that breaks whenever one particular person is on leave",
     ],
     deliverables: [
-      "An agreed number of days each month, planned with you at the start of it",
-      "Monitoring and alerting so problems surface before customers report them",
-      "Written monthly summary of what changed and what is coming",
-      "Documentation that accumulates through the engagement rather than arriving at the end",
-      "A named point of contact with context on your systems",
+      "Working automation running in your environment on a schedule or a trigger",
+      "Error handling, retries, and alerting so failures surface instead of accumulating",
+      "Logging you can audit when someone asks what happened to a record",
+      "Documentation and a walkthrough so your team can adjust it without us",
+      "An honest before-and-after estimate of the hours removed",
     ],
     notFor: [
-      "Round-the-clock on-call staffing — instead, we help you design a rotation and write the runbooks it depends on",
-      "Desktop, printer, and end-user helpdesk support; we work on systems, not workstations",
-      "Organisations large enough to need a staffed internal platform team",
+      "Processes still changing weekly — automate them once they have settled, or you will pay to rebuild",
+      "Work that happens twice a year; the automation will cost more than the work",
+      "Replacing a person's judgement rather than their typing",
     ],
     stance: {
-      claim: "A good retainer should shrink over time.",
+      claim: "Automate the process you have, not the process you wish you had.",
       detail:
-        "If you need the same number of days from us in month twelve as in month one, we have been maintaining a dependency rather than building capability. Every retainer we run has handover built into it.",
+        "The most common failure is redesigning the workflow at the same time as automating it. You end up debugging two changes at once and cannot tell which one broke. Automate the current process faithfully, get it stable, then improve it deliberately.",
     },
-    stack: ["AWS", "Linux", "Terraform", "Docker", "Grafana", "PostgreSQL", "MySQL"],
-    typicalTimeline: "Rolling monthly, cancel with 30 days' notice",
+    stack: ["Python", "Go", "n8n", "REST & GraphQL APIs", "PostgreSQL", "MySQL", "AWS Lambda"],
+    typicalTimeline: "1-6 weeks per workflow",
     body: {
       problem:
-        "Between having no technical needs and being able to justify a full-time engineering hire there is a long, awkward stretch. During it, critical systems have no owner, maintenance is deferred until it becomes an incident, and significant technical decisions get made by whoever is available rather than whoever knows.",
+        "Manual process work is invisible on any budget line. Nobody has a cost centre called \"copying rows between systems\", so it never competes for attention — it just quietly consumes hours every week, introduces errors nobody catches until month end, and stops entirely when one particular person takes leave.",
       approach: [
         {
-          title: "Understand the estate first",
+          title: "Follow the process as it actually runs",
           detail:
-            "Before committing to a retainer, we document what you are actually running. Retainers that start without this turn into expensive guesswork.",
+            "We watch it happen and write down every step, including the exceptions people handle without thinking. The exceptions are where automation projects usually fail.",
         },
         {
-          title: "Plan the month up front",
+          title: "Count the hours honestly",
           detail:
-            "We agree at the start of each month what the days go on. No open-ended time and no surprise invoices.",
+            "How often it runs, how long it takes, what an error costs to fix. If the numbers do not justify the build, we will say so before you spend anything.",
         },
         {
-          title: "Fix causes, not tickets",
+          title: "Automate the common path first",
           detail:
-            "Recurring work gets automated rather than repeated. The list of things needing us should get shorter.",
+            "Cover the majority case and route the rest to a person. Chasing full coverage on day one is how these projects double in cost.",
         },
         {
-          title: "Be available before decisions",
+          title: "Make failure loud",
           detail:
-            "The cheapest technical advice is given before the thing is built. Retainer clients get us in the conversation early.",
+            "Automation that fails silently is worse than the manual process, because nobody notices for weeks. Every workflow gets retries, alerting, and an audit log.",
+        },
+        {
+          title: "Hand over the controls",
+          detail:
+            "Your team should be able to change a threshold or a recipient without booking us. Where that is possible, we build it that way.",
         },
       ],
       outcome:
-        "Your systems have an owner, maintenance stops accumulating into incidents, and there is someone with context to ask before a decision gets made. When you do hire internally, they inherit a documented system rather than a mystery.",
+        "The work happens on its own, failures reach a human quickly, and the hours go back to your team. We will tell you the measured before-and-after rather than a projected one.",
+    },
+  },
+  {
+    slug: "ai",
+    name: "AI Solutions",
+    headline: "AI that does a specific job, not a demo",
+    subtitle: "AI development — LLM integration, chatbots, document processing, RAG",
+    seoTitle: "AI & LLM Solutions for Business | Manish S Consulting",
+    metaDescription:
+      "AI assistants, document processing and LLM features built for a named problem and measured, not demos. Fixed price, written scope.",
+    summary:
+      "We build AI features that solve a named problem and can be measured: assistants trained on your own documentation, document processing that removes manual data entry, and LLM features inside your existing product.",
+    icon: Sparkles,
+    capabilities: [
+      {
+        name: "Internal knowledge assistants",
+        detail:
+          "A chatbot that answers from your own documentation, policies, and past tickets rather than from the open internet — retrieval-augmented so answers cite their source and can be checked.",
+      },
+      {
+        name: "Document processing",
+        detail:
+          "Extract structured data from invoices, contracts, forms, and PDFs, with a confidence threshold and a human review queue for anything below it.",
+      },
+      {
+        name: "LLM features in your product",
+        detail:
+          "Summarisation, classification, drafting, and search built into software you already run, with cost controls and fallbacks so a provider outage does not take your product down.",
+      },
+      {
+        name: "Customer support automation",
+        detail:
+          "Triage and first-line responses that hand off cleanly to a person, with the handoff point tuned so customers are not trapped in a loop.",
+      },
+      {
+        name: "AI readiness assessment",
+        detail:
+          "A fixed-price review of where AI would genuinely pay for itself in your business, and — as often as not — where it would not.",
+      },
+    ],
+    idealFor: [
+      "A team drowning in a manual process that is mostly reading and re-typing",
+      "A product that needs an AI feature that actually ships, not a prototype",
+      "A business fielding the same customer questions hundreds of times a month",
+      "Anyone who has been quoted a large number for something that should be small",
+    ],
+    deliverables: [
+      "Working feature deployed into your environment, not a notebook",
+      "Evaluation set and accuracy measurements, so \"is it good enough\" has an answer",
+      "Cost-per-request modelling and usage limits before it goes live",
+      "Fallback behaviour for provider outages, rate limits, and low-confidence results",
+      "Documentation covering how it works, what it costs, and how to change the prompts",
+    ],
+    notFor: [
+      "Training foundation models from scratch — almost nobody needs this, and we will say so",
+      "\"Add AI\" with no problem attached; we will help you find the problem first, but we will not skip that step",
+      "Use cases where a wrong answer is unacceptable and there is no way to put a human in the loop",
+    ],
+    stance: {
+      claim: "Most AI projects fail on evaluation, not on modelling.",
+      detail:
+        "Getting a plausible answer out of a language model takes an afternoon. Knowing whether it is right often enough to put in front of customers takes an evaluation set, a threshold, and a fallback. Teams that skip that part ship something impressive in a demo and unusable in production.",
+    },
+    stack: ["Python", "Claude", "OpenAI", "Azure AI", "LangChain", "Vector databases", "FastAPI"],
+    typicalTimeline: "2-8 weeks depending on scope",
+    body: {
+      problem:
+        "AI is easy to buy and hard to get value from. The gap is rarely the model — it is that nobody defined what success looks like, so there is no way to tell whether the thing works. Projects stall in an endless prototype phase, or worse, ship without evaluation and quietly give customers wrong answers with total confidence.",
+      approach: [
+        {
+          title: "Start from the process, not the technology",
+          detail:
+            "We look at the actual manual work you want removed and how often it happens. If the honest answer is that a database query or a form would solve it better, that is what we will tell you.",
+        },
+        {
+          title: "Define what good looks like before building",
+          detail:
+            "An evaluation set of real examples with known correct answers. Without it, \"it seems to work\" is the only quality bar available, and it is not one you can defend to a customer.",
+        },
+        {
+          title: "Build the narrow version first",
+          detail:
+            "One use case, deployed, measured, in front of real users. Breadth comes after something is demonstrably working, not before.",
+        },
+        {
+          title: "Design for being wrong",
+          detail:
+            "Confidence thresholds, human review queues, graceful degradation when a provider is down. The failure path matters more than the happy path in anything customer-facing.",
+        },
+        {
+          title: "Control the cost before launch",
+          detail:
+            "Per-request cost modelled against realistic volume, with caching and limits in place. AI features that get expensive at scale are a business problem, not a technical one.",
+        },
+      ],
+      outcome:
+        "A feature doing a specific job, with numbers showing how well it does it and what it costs to run. You can decide whether to expand it on evidence rather than on enthusiasm.",
     },
   },
 ];
 
 export const getService = (slug: string) => services.find((s) => s.slug === slug);
 
-/** Flagship first, then the rest in declaration order. */
-export const orderedServices = [
-  ...services.filter((s) => s.flagship),
-  ...services.filter((s) => !s.flagship),
-];
+/** Declaration order is display order: most widely needed first. */
+export const orderedServices = services;

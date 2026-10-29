@@ -42,7 +42,7 @@ export function seo({ title, description, path, image = defaultOgImage, type = "
     ],
     links: [
       { rel: "canonical", href: url },
-      { rel: "alternate", hrefLang: "en-IN", href: url },
+      { rel: "alternate", hrefLang: "en", href: url },
       { rel: "alternate", hrefLang: "x-default", href: url },
     ],
     scripts: jsonLd ? [{ type: "application/ld+json", children: serialise(jsonLd) }] : [],

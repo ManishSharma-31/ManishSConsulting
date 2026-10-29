@@ -1,6 +1,6 @@
 # Manish S Consulting
 
-Website for **Manish S Consulting**, an independent IT consultancy in Pune, India offering AI solutions, automation, web development, cloud, DevOps and IT support.
+Website for **Manish S Consulting**, an independent IT consulting practice offering web and software development, cloud, DevOps, automation, AI and IT support to businesses of every size and to individuals.
 
 Live site: <https://manishsconsulting.tech>
 
@@ -165,13 +165,13 @@ Text lives in `src/content`, not in the page components.
 | --- | --- |
 | `site.ts` | Business name, email, WhatsApp link, location, social links, navigation, canonical `siteUrl` |
 | `services.ts` | The six services and their page content |
-| `projects.ts` | Case studies (currently demo placeholders) |
+| `projects.ts` | Case study and worked examples (each entry has a `kind`) |
 | `faq.ts` | FAQ entries, shown on the home page and in FAQ structured data |
 | `process.ts` | Process steps, guarantees and "not the right fit" list |
 | `credentials.ts` | Results, differentiators and certifications used on the home page |
 | `legal.ts` | Privacy Policy, Terms of Service and Cookie Policy text |
 
-Case studies marked `isPlaceholder: true` are excluded from search indexing and the sitemap. Replace them with real engagements and set the flag to `false`.
+Entries in `projects.ts` are either a real `case-study` or a `worked-example` (a representative scenario that names no client and lists no results). Both are indexed and labelled on the page. Replace a worked example with a real case study by changing its `kind` and filling in facts you can stand behind.
 
 ## SEO
 
@@ -223,5 +223,5 @@ To target another platform (Cloudflare, Vercel, Netlify), set a preset in `vite.
 2. Point `manishsconsulting.tech` at the host, enable HTTPS, and redirect `www` to the bare domain.
 3. Add the site in Google Search Console and Bing Webmaster Tools, then submit `https://manishsconsulting.tech/sitemap.xml`.
 4. Create a Google Business Profile and use the exact name "Manish S Consulting" on LinkedIn, GitHub and directories.
-5. Replace the demo case studies with real ones.
+5. Replace the worked examples with real case studies as you complete engagements.
 6. Have the legal pages reviewed by a lawyer.

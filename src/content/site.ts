@@ -12,14 +12,14 @@
 export const site = {
   name: "Manish S Consulting",
   /** Sits under the name in the header, OG tags, and the footer. */
-  descriptor: "IT Consulting & Technology Services",
+  descriptor: "IT Consulting & Technology Solutions",
   /** Longer positioning line for the hero eyebrow and metadata. */
-  role: "IT Consulting & Technology Services",
+  role: "IT Consulting & Technology Solutions",
 
   tagline:
-    "We help growing businesses build, automate and run their technology — from AI and web applications to the cloud infrastructure that keeps them reliable.",
+    "One expert for every kind of IT need, for businesses of every size and for individuals. From a first website to cloud, automation and AI, planned in writing and looked after by the same person.",
   description:
-    "Independent IT consultancy delivering AI solutions, automation, web development, cloud architecture, DevOps, and ongoing technical support for startups, SMBs, and agencies.",
+    "Independent IT consulting for businesses of every size and for individuals: software and web development, cloud, DevOps, automation, AI and ongoing IT support. Fixed prices, written scope.",
 
   /** Legal contracting party. Sole proprietorship — no CIN or GST to display yet. */
   legal: {
@@ -33,14 +33,11 @@ export const site = {
   phoneDisplay: "+91 63788 79085",
   whatsappUrl: "https://wa.me/916378879085?text=" + encodeURIComponent("Hi Manish, I'd like to discuss a project."),
 
-  /** Single source of truth for location — hero, footer, contact page, JSON-LD. */
-  location: "Pune, Maharashtra, India",
-  city: "Pune",
-  region: "Maharashtra",
-  country: "IN",
+  /** Remote-first and not tied to a place. Used in the hero, footer, contact page and structured data. */
+  location: "Remote-first, working worldwide",
 
-  timezone: "IST (UTC+5:30)",
-  overlap: "4+ hrs overlap with EU, 3+ with US East",
+  timezone: "Remote-first",
+  overlap: "calls scheduled around your time zone",
 
   /** Availability banner. Update by hand — capacity is more credible than "available". */
   availability: {
@@ -52,7 +49,7 @@ export const site = {
   responseTime: "Replies within 24 hours on weekdays",
 
   socials: {
-    github: "https://github.com/MrMKsharma",
+    github: "https://github.com/ManishSharma-31",
     linkedin: "https://www.linkedin.com/in/manishsharma31",
     // x: "https://x.com/ManishSharma31",
   },
@@ -73,14 +70,14 @@ export const navItems = [
 ];
 
 /**
- * Sectors we actively work with. Kept honest — these are markets the services
- * suit, described as such, not a claim of delivered projects in each.
+ * Who the practice is for. Described as the situations the services suit, not
+ * as a claim of delivered projects in each.
  */
-export const industries = [
-  { name: "SaaS & product startups", detail: "Shipping features while keeping infrastructure boring" },
-  { name: "E-commerce & retail", detail: "Storefronts, integrations, and uptime through peak season" },
-  { name: "Agencies & studios", detail: "White-label engineering capacity under your brand" },
-  { name: "Professional services", detail: "Internal tools and automation that remove manual work" },
-  { name: "Logistics & operations", detail: "Systems integration and data flowing between platforms" },
-  { name: "Early-stage founders", detail: "Getting a first product built properly, once" },
+export const audiences = [
+  { name: "Individuals & freelancers", detail: "A personal site, a portfolio, a stubborn setup problem, or honest advice before you buy" },
+  { name: "Small businesses", detail: "Websites, online stores, automation and dependable day-to-day IT without hiring staff" },
+  { name: "Growing companies", detail: "Software, cloud and delivery that scale with the business, not ahead of it" },
+  { name: "Established organisations", detail: "A specialist for one project, a migration, or an independent technical review" },
+  { name: "Agencies & studios", detail: "White-label engineering capacity under your own brand" },
+  { name: "Founders & first-time builders", detail: "Getting a first product built properly, once" },
 ];

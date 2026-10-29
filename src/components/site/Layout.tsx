@@ -1,5 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
+import { AnimatePresence, LazyMotion, m } from "framer-motion";
+import { Cube3D } from "@/components/fx/Cube3D";
+import { Magnetic, Reveal } from "@/components/fx/motion";
 import { ArrowUpRight, Menu, X, Github, Linkedin, /* Twitter, */ Mail } from "lucide-react";
 import { navItems, site } from "@/content/site";
 import { services } from "@/content/services";
@@ -39,8 +42,16 @@ export function Header() {
           {open ? <X /> : <Menu />}
         </button>
       </div>
+      <LazyMotion features={() => import("@/components/fx/motion-features").then((r) => r.default)}>
+      <AnimatePresence>
       {open && (
-        <nav className="flex flex-col gap-1 border-t border-border px-5 py-4 md:hidden">
+        <m.nav
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className="flex flex-col gap-1 overflow-hidden border-t border-border px-5 py-4 md:hidden"
+        >
           {navItems
             .filter((n) => n.href !== "/blog")
             .map((n) => (
@@ -48,8 +59,10 @@ export function Header() {
                 {n.name}
               </Link>
             ))}
-        </nav>
+        </m.nav>
       )}
+      </AnimatePresence>
+      </LazyMotion>
     </header>
   );
 }
@@ -111,6 +124,7 @@ export function Footer() {
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-2 px-5 py-6 text-xs text-muted-foreground md:flex-row md:px-8">
           <span>© {new Date().getFullYear()} {site.name}. All rights reserved.</span>
           <nav className="flex gap-5">
+            <Link to="/faq" className="hover:text-foreground">FAQ</Link>
             <Link to="/privacy" className="hover:text-foreground">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-foreground">Terms of Service</Link>
             <Link to="/cookies" className="hover:text-foreground">Cookie Policy</Link>
@@ -127,11 +141,11 @@ export function Section({ children, className = "" }: { children: ReactNode; cla
 
 export function SectionTitle({ eyebrow, title, intro }: { eyebrow: string; title: ReactNode; intro?: string }) {
   return (
-    <div className="mb-14 max-w-3xl">
+    <Reveal className="mb-14 max-w-3xl">
       <p className="eyebrow">{eyebrow}</p>
       <h2 className="mt-4 font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl">{title}</h2>
       {intro && <p className="mt-5 text-lg text-muted-foreground">{intro}</p>}
-    </div>
+    </Reveal>
   );
 }
 
@@ -145,12 +159,15 @@ export function PageHero({ eyebrow, title, intro, image }: { eyebrow: string; ti
         </>
       )}
       <div className="bg-grid absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
+      <div className="animate-aurora glow-lime absolute -left-32 -top-20 size-[36rem]" />
+      <div className="animate-aurora glow-amber absolute -bottom-24 -right-24 size-[32rem] [animation-delay:-6s]" />
+      <Cube3D />
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <p className="eyebrow animate-rise">{eyebrow}</p>
         <h1 className="animate-rise mt-5 max-w-4xl font-display text-5xl font-semibold leading-[1.02] tracking-tight md:text-7xl">
           {title}
         </h1>
-        <p className="animate-rise mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">{intro}</p>
+        <p className="animate-rise mt-6 max-w-2xl text-lg text-muted-foreground [animation-delay:0.15s] md:text-xl">{intro}</p>
       </div>
     </section>
   );
@@ -159,9 +176,10 @@ export function PageHero({ eyebrow, title, intro, image }: { eyebrow: string; ti
 export function CtaBand() {
   return (
     <Section>
+      <Reveal>
       <div className="relative overflow-hidden rounded-3xl border border-border bg-surface p-10 md:p-16">
-        <div className="absolute -right-24 -top-24 size-96 rounded-full bg-primary/20 blur-3xl" />
-        <div className="absolute -bottom-32 left-1/3 size-80 rounded-full bg-amber/15 blur-3xl" />
+        <div className="animate-aurora glow-lime absolute -right-40 -top-40 size-[34rem]" />
+        <div className="animate-aurora glow-amber absolute -bottom-48 left-1/4 size-[32rem] [animation-delay:-7s]" />
         <div className="relative grid items-end gap-8 md:grid-cols-[1.5fr_1fr]">
           <div>
             <p className="eyebrow">Free discovery call</p>
@@ -173,16 +191,19 @@ export function CtaBand() {
             </p>
           </div>
           <div className="flex flex-col gap-3 md:items-end">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 font-semibold text-primary-foreground transition hover:shadow-glow"
-            >
-              Start a conversation <ArrowUpRight className="size-5" />
-            </Link>
+            <Magnetic>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 font-semibold text-primary-foreground transition hover:shadow-glow"
+              >
+                Start a conversation <ArrowUpRight className="size-5" />
+              </Link>
+            </Magnetic>
             <span className="text-sm text-muted-foreground">{site.responseTime}</span>
           </div>
         </div>
       </div>
+      </Reveal>
     </Section>
   );
 }

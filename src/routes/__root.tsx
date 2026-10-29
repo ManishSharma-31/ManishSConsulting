@@ -4,17 +4,19 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import serifItalicFont from "@fontsource/instrument-serif/files/instrument-serif-latin-400-italic.woff2?url";
 import monoFont from "@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2?url";
 import headingFont from "@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url";
 import { Header, Footer } from "@/components/site/Layout";
+import { CursorGlow, ScrollProgress } from "@/components/fx/motion";
 
 function NotFoundComponent() {
   return (
@@ -81,8 +83,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Manish S Consulting — AI, Cloud & DevOps Consultancy" },
-      { name: "description", content: "Independent IT consultancy in Pune building AI, automation, web, cloud and DevOps systems." },
+      { title: "Manish S Consulting | IT Consulting & Technology Solutions" },
+      { name: "description", content: "Independent IT consulting for businesses of every size and individuals: web, software, cloud, automation, AI and everyday IT support." },
       { name: "author", content: "Manish Sharma" },
       { name: "theme-color", content: "#0a0a0a" },
       ...(import.meta.env["VITE_GOOGLE_SITE_VERIFICATION"]
@@ -94,9 +96,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "application-name", content: "Manish S Consulting" },
       { name: "apple-mobile-web-app-title", content: "Manish S Consulting" },
       { property: "og:site_name", content: "Manish S Consulting" },
-      { property: "og:locale", content: "en_IN" },
-      { name: "geo.region", content: "IN-MH" },
-      { name: "geo.placename", content: "Pune" },
+      { property: "og:locale", content: "en" },
       { name: "twitter:card", content: "summary_large_image" },
       // { name: "twitter:site", content: "@ManishSharma31" },
     ],
@@ -120,9 +120,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en-IN">
+    <html lang="en">
       <head>
         <HeadContent />
+        <noscript>
+          <style>{"[data-reveal]{opacity:1!important;transform:none!important}"}</style>
+        </noscript>
       </head>
       <body>
         {children}
@@ -134,11 +137,31 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  // The first paint must never wait on an animation; only later navigations fade in.
+  const firstPath = useRef(pathname);
+  const navigated = useRef(false);
+  if (pathname !== firstPath.current) navigated.current = true;
+
+  // Warm every top-level page's code once the browser is idle, so navigation never waits on the network.
+  useEffect(() => {
+    const ric = (window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }).requestIdleCallback;
+    const run = () => {
+      for (const to of ["/services", "/work", "/about", "/contact"] as const) void router.preloadRoute({ to }).catch(() => {});
+    };
+    const id = ric ? ric(run, { timeout: 4000 }) : window.setTimeout(run, 1500);
+    return () => {
+      if (!ric) window.clearTimeout(id);
+    };
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ScrollProgress />
+      <CursorGlow />
       <Header />
-      <main>
+      <main key={pathname} className={navigated.current ? "page-in" : undefined}>
         <Outlet />
       </main>
       <Footer />

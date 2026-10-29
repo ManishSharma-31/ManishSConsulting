@@ -5,13 +5,13 @@
  */
 export const results = [
   {
-    value: "90%",
-    label: "Faster deployments",
-    detail: "Measured on a production CI/CD rebuild",
+    value: "Any",
+    label: "Size of client",
+    detail: "Individuals, small businesses and larger organisations",
   },
   {
     value: "6",
-    label: "Services, one point of contact",
+    label: "Service areas, one point of contact",
     detail: "No vendor coordination overhead",
   },
   {
@@ -34,7 +34,7 @@ export const differentiators = [
   {
     title: "We build it and we run it",
     detail:
-      "Plenty of agencies ship code and hand over a repository. We do the infrastructure, the pipeline, and the monitoring too, which means nobody gets to blame the other side when something breaks.",
+      "Plenty of providers build something and hand it over. We also look after the hosting, the delivery pipeline, the monitoring and the support, which means nobody gets to blame the other side when something breaks.",
   },
   {
     title: "You talk to the person doing the work",

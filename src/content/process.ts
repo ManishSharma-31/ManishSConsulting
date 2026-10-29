@@ -63,9 +63,9 @@ export const notRightFor = [
       "If the decision is already made and the engagement exists to justify it, we will be an expensive irritation. Our findings go where the evidence goes.",
   },
   {
-    title: "Desktop and end-user IT support",
+    title: "You need someone on site",
     detail:
-      "Laptops, printers, and office networks are not what we do. We work on the systems your business runs on, not the workstations it runs from.",
+      "We work remotely. For hands-on hardware or in-person support at your premises, a local provider is the better fit, and we are happy to work alongside them on the technical side.",
   },
 ];
 

@@ -2,8 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { services } from "@/content/services";
 import { projects } from "@/content/projects";
 import { absoluteUrl } from "@/lib/seo";
+import { legalUpdatedIso } from "@/content/legal";
 
-type Entry = { path: string; priority: string; changefreq: string };
+type Entry = { path: string; priority: string; changefreq: string; lastmod?: string };
 
 function entries(): Entry[] {
   const list: Entry[] = [
@@ -12,9 +13,10 @@ function entries(): Entry[] {
     ...services.map((s) => ({ path: `/services/${s.slug}`, priority: "0.8", changefreq: "monthly" })),
     { path: "/about", priority: "0.7", changefreq: "monthly" },
     { path: "/contact", priority: "0.7", changefreq: "yearly" },
-    { path: "/privacy", priority: "0.2", changefreq: "yearly" },
-    { path: "/terms", priority: "0.2", changefreq: "yearly" },
-    { path: "/cookies", priority: "0.2", changefreq: "yearly" },
+    { path: "/faq", priority: "0.6", changefreq: "monthly" },
+    { path: "/privacy", priority: "0.2", changefreq: "yearly", lastmod: legalUpdatedIso },
+    { path: "/terms", priority: "0.2", changefreq: "yearly", lastmod: legalUpdatedIso },
+    { path: "/cookies", priority: "0.2", changefreq: "yearly", lastmod: legalUpdatedIso },
   ];
   list.splice(
     list.findIndex((e) => e.path === "/about"),
@@ -37,7 +39,7 @@ export const Route = createFileRoute("/sitemap.xml")({
 ${entries()
   .map(
     (e) =>
-      `  <url><loc>${absoluteUrl(e.path)}</loc><lastmod>${lastmod}</lastmod><changefreq>${e.changefreq}</changefreq><priority>${e.priority}</priority></url>`,
+      `  <url><loc>${absoluteUrl(e.path)}</loc><lastmod>${e.lastmod ?? lastmod}</lastmod><changefreq>${e.changefreq}</changefreq><priority>${e.priority}</priority></url>`,
   )
   .join("\n")}
 </urlset>
