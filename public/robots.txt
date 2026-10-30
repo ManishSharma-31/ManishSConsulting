@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://manishsconsulting.tech/sitemap.xml
+Sitemap: https://www.manishsconsulting.tech/sitemap.xml

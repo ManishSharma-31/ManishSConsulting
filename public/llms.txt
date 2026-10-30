@@ -4,7 +4,7 @@
 
 Manish S Consulting is a sole-proprietor consultancy run by Manish Sharma. It is deliberately small: the person you brief is the person who builds and runs the work. Engagements are scoped in writing and priced up front. There is a free 30-minute discovery call, and replies arrive within 24 hours on weekdays.
 
-Website: https://manishsconsulting.tech
+Website: https://www.manishsconsulting.tech
 Contact: info@manishsconsulting.tech
 Where: remote-first, working with clients worldwide. Calls are scheduled around the client's time zone.
 
@@ -12,12 +12,12 @@ Where: remote-first, working with clients worldwide. Calls are scheduled around 
 Individuals and freelancers, small businesses, growing companies, established organisations, agencies and first-time founders. If a problem is about technology and not on the list below, bring it to a free call: it will either be taken on or the client will be pointed to someone better suited.
 
 ## Services
-- [Web Development](https://manishsconsulting.tech/services/web-development): websites, web applications, APIs, e-commerce
-- [IT Solutions & Support](https://manishsconsulting.tech/services/it-solutions): managed maintenance, technical advisory, due diligence, security hygiene
-- [Cloud](https://manishsconsulting.tech/services/cloud): cloud architecture, migration to AWS, infrastructure as code, cost optimisation
-- [DevOps](https://manishsconsulting.tech/services/devops): CI/CD pipelines, containers, monitoring, release safety
-- [Automation](https://manishsconsulting.tech/services/automation): system integrations, workflow automation, internal tools, data pipelines
-- [AI Solutions](https://manishsconsulting.tech/services/ai): knowledge assistants, document processing, LLM features, support automation
+- [Web Development](https://www.manishsconsulting.tech/services/web-development): websites, web applications, APIs, e-commerce
+- [IT Solutions & Support](https://www.manishsconsulting.tech/services/it-solutions): managed maintenance, technical advisory, due diligence, security hygiene
+- [Cloud](https://www.manishsconsulting.tech/services/cloud): cloud architecture, migration to AWS, infrastructure as code, cost optimisation
+- [DevOps](https://www.manishsconsulting.tech/services/devops): CI/CD pipelines, containers, monitoring, release safety
+- [Automation](https://www.manishsconsulting.tech/services/automation): system integrations, workflow automation, internal tools, data pipelines
+- [AI Solutions](https://www.manishsconsulting.tech/services/ai): knowledge assistants, document processing, LLM features, support automation
 
 Each service page lists what is included, the typical timeline, what the client receives, who it suits, when it is not the right fit, and a service-specific FAQ.
 
@@ -29,19 +29,19 @@ Each service page lists what is included, the typical timeline, what the client 
 The client owns all code, configuration and documentation.
 
 ## Work
-- [LeadStock CRM: multi-tenant sales for IT hardware resellers](https://manishsconsulting.tech/work/leadstock-crm): a live product built and deployed by Manish Sharma (React 19, TanStack Start, Supabase, Postgres Row Level Security); demo at https://lead-stock-pro.vercel.app
-- [Automating a production deployment pipeline end to end](https://manishsconsulting.tech/work/gitlab-pipeline-rebuild): real case study, deployment efficiency improved by 90% with GitLab CI/CD and Terraform
-- [Bringing hand-built cloud infrastructure under Terraform](https://manishsconsulting.tech/work/terraform-migration): worked example of an infrastructure-as-code migration
-- [A Go service built to be operated from day one](https://manishsconsulting.tech/work/go-service-build): worked example of a backend integration service
+- [LeadStock CRM: multi-tenant sales for IT hardware resellers](https://www.manishsconsulting.tech/work/leadstock-crm): a live product built and deployed by Manish Sharma (React 19, TanStack Start, Supabase, Postgres Row Level Security); demo at https://lead-stock-pro.vercel.app
+- [Automating a production deployment pipeline end to end](https://www.manishsconsulting.tech/work/gitlab-pipeline-rebuild): real case study, deployment efficiency improved by 90% with GitLab CI/CD and Terraform
+- [Bringing hand-built cloud infrastructure under Terraform](https://www.manishsconsulting.tech/work/terraform-migration): worked example of an infrastructure-as-code migration
+- [A Go service built to be operated from day one](https://www.manishsconsulting.tech/work/go-service-build): worked example of a backend integration service
 
 LeadStock CRM is a real product. The pipeline entry is real work delivered in a previous role, and its 90% figure is the one that was measured. The last two are worked examples: representative scenarios that describe no real client and list no results.
 
 ## Company
-- [About](https://manishsconsulting.tech/about): how the consultancy works, principles, process and commitments
-- [All work](https://manishsconsulting.tech/work)
-- [Contact and booking](https://manishsconsulting.tech/contact)
-- [FAQ](https://manishsconsulting.tech/faq): scope, pricing, process, ownership, NDAs and handover
-- [Privacy policy](https://manishsconsulting.tech/privacy)
-- [Terms of service](https://manishsconsulting.tech/terms)
-- [Cookie policy](https://manishsconsulting.tech/cookies)
-- [Sitemap](https://manishsconsulting.tech/sitemap.xml)
+- [About](https://www.manishsconsulting.tech/about): how the consultancy works, principles, process and commitments
+- [All work](https://www.manishsconsulting.tech/work)
+- [Contact and booking](https://www.manishsconsulting.tech/contact)
+- [FAQ](https://www.manishsconsulting.tech/faq): scope, pricing, process, ownership, NDAs and handover
+- [Privacy policy](https://www.manishsconsulting.tech/privacy)
+- [Terms of service](https://www.manishsconsulting.tech/terms)
+- [Cookie policy](https://www.manishsconsulting.tech/cookies)
+- [Sitemap](https://www.manishsconsulting.tech/sitemap.xml)

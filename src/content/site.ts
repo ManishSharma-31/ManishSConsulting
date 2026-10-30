@@ -57,7 +57,7 @@ export const site = {
 };
 
 /** Canonical origin — used for canonical links, Open Graph, sitemap and JSON-LD. No trailing slash. */
-export const siteUrl = "https://manishsconsulting.tech";
+export const siteUrl = "https://www.manishsconsulting.tech";
 
 /** Optional Cal.com handle, e.g. "manishsharma/intro". Falls back to the contact page. */
 export const calLink: string = import.meta.env["VITE_CAL_LINK"] ?? "";

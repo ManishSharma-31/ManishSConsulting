@@ -1,32 +1,22 @@
-import { siteUrl } from "@/content/site";
-
-const canonicalHost = new URL(siteUrl).hostname;
-
 /**
- * One URL per page. Permanent (301) redirects send `www.` to the canonical host and
- * strip trailing slashes, so search engines consolidate signals instead of indexing
- * duplicates. The router's own trailing-slash redirect is a temporary 307.
+ * Permanent (301) redirect from a trailing-slash URL to its slash-less twin, so search
+ * engines see one URL per page (the router's own redirect for this is a temporary 307).
+ *
+ * This deliberately does NOT redirect between `www` and the bare domain. That choice
+ * belongs to the host (Vercel's domain settings): redirecting in the app as well as at
+ * the host sends the two redirects in opposite directions and produces
+ * ERR_TOO_MANY_REDIRECTS. The Location is relative, so it can never name the wrong host.
  * Returns null when the request is already canonical.
  */
 export function canonicalRedirect(request: Request): Response | null {
   if (request.method !== "GET" && request.method !== "HEAD") return null;
 
   const url = new URL(request.url);
-  const host = (request.headers.get("x-forwarded-host") ?? request.headers.get("host") ?? url.hostname).split(":")[0];
-  let changed = false;
+  if (url.pathname.length <= 1 || !url.pathname.endsWith("/")) return null;
 
-  if (host === `www.${canonicalHost}`) {
-    url.protocol = "https:";
-    url.hostname = canonicalHost;
-    url.port = "";
-    changed = true;
-  }
-  if (url.pathname.length > 1 && url.pathname.endsWith("/")) {
-    url.pathname = url.pathname.replace(/\/+$/, "") || "/";
-    changed = true;
-  }
-
-  return changed
-    ? new Response(null, { status: 301, headers: { Location: url.toString(), "Cache-Control": "public, max-age=3600" } })
-    : null;
+  const path = url.pathname.replace(/\/+$/, "") || "/";
+  return new Response(null, {
+    status: 301,
+    headers: { Location: `${path}${url.search}`, "Cache-Control": "public, max-age=3600" },
+  });
 }

@@ -2,7 +2,7 @@
 
 Website for **Manish S Consulting**, an independent IT consulting practice offering web and software development, cloud, DevOps, automation, AI and IT support to businesses of every size and to individuals.
 
-Live site: <https://manishsconsulting.tech>
+Live site: <https://www.manishsconsulting.tech>
 
 ## Contents
 
@@ -206,7 +206,7 @@ flowchart LR
     B --> C["npm run build"]
     C --> D[".output/"]
     D --> E["Host runs<br/>node .output/server/index.mjs"]
-    E --> F["manishsconsulting.tech"]
+    E --> F["www.manishsconsulting.tech"]
 ```
 
 `npm run build` produces a Node server in `.output/`. Run it with:
@@ -220,8 +220,8 @@ To target another platform (Cloudflare, Vercel, Netlify), set a preset in `vite.
 ## Before you go live
 
 1. Set `VITE_WEB3FORMS_KEY` on the host, using a key registered to `info@manishsconsulting.tech`.
-2. Point `manishsconsulting.tech` at the host, enable HTTPS, and redirect `www` to the bare domain.
-3. Add the site in Google Search Console and Bing Webmaster Tools, then submit `https://manishsconsulting.tech/sitemap.xml`.
+2. Point the domain at the host and enable HTTPS. The canonical address is `www.manishsconsulting.tech` (set as `siteUrl` in `src/content/site.ts`); configure the host to redirect the bare domain to it. Do not also redirect `www` in the app, or the two redirects loop.
+3. Add the site in Google Search Console and Bing Webmaster Tools, then submit `https://www.manishsconsulting.tech/sitemap.xml`.
 4. Create a Google Business Profile and use the exact name "Manish S Consulting" on LinkedIn, GitHub and directories.
 5. Replace the worked examples with real case studies as you complete engagements.
 6. Have the legal pages reviewed by a lawyer.
