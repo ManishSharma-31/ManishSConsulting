@@ -11,9 +11,9 @@ import { PageHero, Section, SectionTitle, CtaBand } from "@/components/site/Layo
 export const Route = createFileRoute("/services/")({
   head: () =>
     seo({
-      title: "IT Consulting & Technology Services | Manish S Consulting",
+      title: "IT Consulting & Technology Services | SunCrest Technology",
       description:
-        "Web development, cloud, DevOps, automation, AI and ongoing IT support for businesses of every size and individuals. Fixed prices, written scope.",
+        "Get web development, cloud, DevOps, automation, AI and IT support from one expert, for individuals and businesses of every size. Fixed prices, written scope.",
       path: "/services",
       jsonLd: breadcrumbLd([{ name: "Home", path: "/" }, { name: "Services", path: "/services" }]),
     }),
@@ -26,8 +26,8 @@ function ServicesPage() {
       <PageHero
         eyebrow="Services"
         image={hero}
-        title={<>Every kind of IT, <span className="font-serif italic text-gradient">from one expert.</span></>}
-        intro="Pick one service or combine several. Whether you are one person with one problem or a team with a roadmap, you deal with a single expert who owns the outcome end to end."
+        title={<>Whatever you need, <span className="font-serif italic text-gradient">one expert to call.</span></>}
+        intro="Pick one service or combine several. Whether you are one person with one problem or a team with a roadmap, you deal with a single expert who is responsible for the outcome from start to finish."
       />
       <Section>
         <div className="space-y-6">
@@ -58,7 +58,7 @@ function ServicesPage() {
                   </ul>
                   <div className="mt-8 flex items-center justify-between">
                     <span className="font-mono text-xs text-muted-foreground">{s.typicalTimeline}</span>
-                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-primary">Details <ArrowRight className="size-4 transition group-hover:translate-x-1" /></span>
+                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-primary">See how it helps <ArrowRight className="size-4 transition group-hover:translate-x-1" /></span>
                   </div>
                 </div>
               </Link>
@@ -70,9 +70,9 @@ function ServicesPage() {
       </Section>
       <Section>
         <SectionTitle
-          eyebrow="Everything we can help with"
+          eyebrow="Everything you can bring"
           title={<>If it is technology, <span className="font-serif italic text-gradient">bring it.</span></>}
-          intro="A snapshot of the work inside the six service areas. Not on the list? Start a conversation: we will either take it on or tell you who should."
+          intro="A snapshot of the help inside the six services. Not on the list? Start a conversation and you will hear either that it can be done, or who should do it."
         />
         <Reveal>
           <ul className="flex flex-wrap gap-3">
@@ -95,7 +95,7 @@ function ServicesPage() {
       </Section>
       <section className="border-y border-border bg-surface">
         <Section>
-          <SectionTitle eyebrow="Ways to engage" title="Three ways to work together." />
+          <SectionTitle eyebrow="Ways to work together" title="Three ways to get what you need." />
           <div className="grid gap-6 md:grid-cols-3">
             {engagementModels.map((m, i) => (
               <Reveal key={m.title} delay={i * 0.1}>

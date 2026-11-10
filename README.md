@@ -1,6 +1,6 @@
-# Manish S Consulting
+# SunCrest Technology
 
-Website for **Manish S Consulting**, an independent IT consulting practice offering web and software development, cloud, DevOps, automation, AI and IT support to businesses of every size and to individuals.
+Website for **SunCrest Technology**, an independent IT consulting practice offering web and software development, cloud, DevOps, automation, AI and IT support to businesses of every size and to individuals.
 
 Live site: <https://www.manishsconsulting.tech>
 
@@ -89,7 +89,7 @@ Pages are rendered on the server, so crawlers receive complete HTML with titles,
 ├── public/                  Static files served as-is
 │   ├── robots.txt           Crawl rules and sitemap pointer
 │   ├── site.webmanifest     Web app manifest
-│   ├── og-image.png         1200x630 social share image
+│   ├── og-image.png         1200x630 social share image (SunCrest wordmark)
 │   └── icon-*, favicon-*    Icons, logo and profile images
 ├── src/
 │   ├── routes/              One file per page (file-based routing)
@@ -222,6 +222,6 @@ To target another platform (Cloudflare, Vercel, Netlify), set a preset in `vite.
 1. Set `VITE_WEB3FORMS_KEY` on the host, using a key registered to `info@manishsconsulting.tech`.
 2. Point the domain at the host and enable HTTPS. The canonical address is `www.manishsconsulting.tech` (set as `siteUrl` in `src/content/site.ts`); configure the host to redirect the bare domain to it. Do not also redirect `www` in the app, or the two redirects loop.
 3. Add the site in Google Search Console and Bing Webmaster Tools, then submit `https://www.manishsconsulting.tech/sitemap.xml`.
-4. Create a Google Business Profile and use the exact name "Manish S Consulting" on LinkedIn, GitHub and directories.
+4. Create a Google Business Profile and use the exact name "SunCrest Technology" on LinkedIn, GitHub and directories.
 5. Replace the worked examples with real case studies as you complete engagements.
 6. Have the legal pages reviewed by a lawyer.

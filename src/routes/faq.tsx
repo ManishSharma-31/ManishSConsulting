@@ -6,17 +6,18 @@ import { faqCategories, faqs, faqsIn } from "@/content/faq";
 import { services } from "@/content/services";
 import { Reveal } from "@/components/fx/motion";
 import { PageHero, Section, CtaBand } from "@/components/site/Layout";
+import workspace from "@/assets/workspace.webp";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/faq")({
   head: () =>
     seo({
-      title: "FAQ: Pricing, Process & Ownership | Manish S Consulting",
+      title: "FAQ: Pricing, Process & Ownership | SunCrest Technology",
       description:
-        "Answers on how Manish S Consulting works: what we take on, who we work with, fixed pricing, scope changes, code ownership, NDAs and handover.",
+        "Get answers before you get in touch: whether we can help, what it costs, what you own, how scope changes work, NDAs and handover.",
       path: "/faq",
       jsonLd: [
-        pageLd("WebPage", "Frequently asked questions", "/faq", "Answers on how Manish S Consulting works: scope, pricing, process, ownership and terms."),
+        pageLd("WebPage", "Frequently asked questions", "/faq", "Answers for people considering IT help: fit, pricing, process, ownership and terms."),
         faqLd(faqs.length),
         breadcrumbLd([{ name: "Home", path: "/" }, { name: "FAQ", path: "/faq" }]),
       ],
@@ -29,8 +30,9 @@ function FaqPage() {
     <>
       <PageHero
         eyebrow="FAQ"
+        image={workspace}
         title={<>Questions, <span className="font-serif italic text-gradient">answered plainly.</span></>}
-        intro="How we work, what it costs, who owns what, and what happens when things change. Can't find yours? Ask on a free 30-minute call."
+        intro="Whether this is right for you, what it costs, who owns what, and what happens when things change. Cannot find your question? Ask it on a free 30-minute call."
       />
       <Section>
         <div className="mx-auto max-w-3xl space-y-16">

@@ -11,12 +11,12 @@ import { PageHero, Section, CtaBand } from "@/components/site/Layout";
 export const Route = createFileRoute("/work/")({
   head: () =>
     seo({
-      title: "Projects, Case Study & Worked Examples | Manish S Consulting",
+      title: "Examples of the Work | SunCrest Technology",
       description:
-        "A live multi-tenant CRM product, a DevOps case study with a measured result, and worked examples of how Manish S Consulting approaches cloud and backend work.",
+        "See how problems like yours get solved: a live CRM you can try, a DevOps case study with a measured result, and worked examples of cloud and backend work.",
       path: "/work",
       jsonLd: [
-        pageLd("CollectionPage", "Projects, case study and worked examples", "/work", "A live CRM product, a DevOps case study and worked examples of how Manish S Consulting approaches cloud and backend work."),
+        pageLd("CollectionPage", "Projects, case study and worked examples", "/work", "A live CRM you can try, a DevOps case study and worked examples of how cloud and backend problems get solved."),
         workListLd(projects),
         breadcrumbLd([{ name: "Home", path: "/" }, { name: "Work", path: "/work" }]),
       ],
@@ -29,14 +29,15 @@ function WorkPage() {
     <>
       <PageHero
         eyebrow="Work"
+        image={projectImages["terraform-migration"]}
         title={<>Real problems, <span className="font-serif italic text-gradient">honestly shown.</span></>}
-        intro="A live product we built, a case study with a measured result, and worked examples of how we approach other kinds of work. Each one says plainly which it is."
+        intro="See how problems like yours get solved: a live product you can try, a case study with a measured result, and worked examples of other kinds of work. Each one says plainly which it is."
       />
       <Section className="space-y-10">
         {hasWorkedExamples && (
           <p className="rounded-xl border border-dashed border-border px-4 py-3 text-sm text-muted-foreground">
-            <strong className="font-medium text-foreground">Project</strong> is a product we built and run, and <strong className="font-medium text-foreground">Case study</strong> is real work with the one figure that was measured.{" "}
-            <strong className="font-medium text-foreground">Worked example</strong> is a representative scenario that shows how we approach a kind of work. It describes no real client and lists no results.
+            <strong className="font-medium text-foreground">Project</strong> is a live product you can try, and <strong className="font-medium text-foreground">Case study</strong> is real work with the one figure that was measured.{" "}
+            <strong className="font-medium text-foreground">Worked example</strong> is a scenario showing how work like yours goes. It describes no real client and lists no results.
           </p>
         )}
         {projects.map((p, i) => (

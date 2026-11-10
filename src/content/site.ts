@@ -1,6 +1,6 @@
 /**
  * Company identity — the single source of truth for anything that names the
- * business. The practice trades as "Manish S Consulting", an independent IT
+ * business. The practice trades as "SunCrest Technology", an independent IT
  * consultancy; the legal contracting party is the sole proprietor behind it
  * (see `legal.contractingParty` below), which is what the Terms and Privacy
  * pages — and any JSON-LD `founder` field — should reference instead of
@@ -10,16 +10,16 @@
  * engineers" or anything implying headcount that does not exist.
  */
 export const site = {
-  name: "Manish S Consulting",
+  name: "SunCrest Technology",
   /** Sits under the name in the header, OG tags, and the footer. */
   descriptor: "IT Consulting & Technology Solutions",
   /** Longer positioning line for the hero eyebrow and metadata. */
   role: "IT Consulting & Technology Solutions",
 
   tagline:
-    "One expert for every kind of IT need, for businesses of every size and for individuals. From a first website to cloud, automation and AI, planned in writing and looked after by the same person.",
+    "Technology that works, so you can get on with your business. One expert for your website, cloud, automation, AI and everyday IT, with a fixed price and a written plan before anything starts.",
   description:
-    "Independent IT consulting for businesses of every size and for individuals: software and web development, cloud, DevOps, automation, AI and ongoing IT support. Fixed prices, written scope.",
+    "Get your IT sorted by one expert you can reach: websites and software, cloud, DevOps, automation, AI and ongoing support, for individuals and businesses of every size. Fixed prices, written scope.",
 
   /** Legal contracting party. Sole proprietorship — no CIN or GST to display yet. */
   legal: {
@@ -31,7 +31,7 @@ export const site = {
   email: "info@manishsconsulting.tech",
   phone: "+916378879085",
   phoneDisplay: "+91 63788 79085",
-  whatsappUrl: "https://wa.me/916378879085?text=" + encodeURIComponent("Hi Manish, I'd like to discuss a project."),
+  whatsappUrl: "https://wa.me/916378879085?text=" + encodeURIComponent("Hi SunCrest Technology, I'd like to discuss a project."),
 
   /** Remote-first and not tied to a place. Used in the hero, footer, contact page and structured data. */
   location: "Remote-first, working worldwide",
@@ -50,7 +50,7 @@ export const site = {
 
   socials: {
     github: "https://github.com/ManishSharma-31",
-    linkedin: "https://www.linkedin.com/in/manishsharma31",
+    linkedin: "https://www.linkedin.com/company/suncresttech",
     // x: "https://x.com/ManishSharma31",
   },
   // xHandle: "ManishSharma31",
@@ -70,14 +70,14 @@ export const navItems = [
 ];
 
 /**
- * Who the practice is for. Described as the situations the services suit, not
- * as a claim of delivered projects in each.
+ * Who this is for, written as the situations visitors recognise in themselves.
+ * Described as what the services suit, not as a claim of delivered projects in each.
  */
 export const audiences = [
-  { name: "Individuals & freelancers", detail: "A personal site, a portfolio, a stubborn setup problem, or honest advice before you buy" },
-  { name: "Small businesses", detail: "Websites, online stores, automation and dependable day-to-day IT without hiring staff" },
-  { name: "Growing companies", detail: "Software, cloud and delivery that scale with the business, not ahead of it" },
-  { name: "Established organisations", detail: "A specialist for one project, a migration, or an independent technical review" },
-  { name: "Agencies & studios", detail: "White-label engineering capacity under your own brand" },
-  { name: "Founders & first-time builders", detail: "Getting a first product built properly, once" },
+  { name: "You are an individual or freelancer", detail: "You want a personal site or portfolio, a setup that will not behave, or honest advice before you buy" },
+  { name: "You run a small business", detail: "You want a website, an online store, less manual work and dependable day-to-day IT without hiring staff" },
+  { name: "You lead a growing company", detail: "You want software, cloud and releases that scale with the business instead of ahead of it" },
+  { name: "You work in a large organisation", detail: "You want a specialist for one project, a migration or an independent technical review" },
+  { name: "You run an agency or studio", detail: "You want engineering capacity delivered under your own brand" },
+  { name: "You are a founder building a first product", detail: "You want it built properly, once, without rebuilding it in a year" },
 ];

@@ -1,4 +1,8 @@
 /**
+ * Copy is framed from the visitor's side (the problem they recognise and what
+ * they end up with), but the facts never change: nothing here claims a client,
+ * user count or result beyond what is on record.
+ *
  * Three kinds of entry, labelled honestly everywhere they appear:
  *
  * - "project": a product built and deployed by Manish Sharma, described only with
@@ -42,12 +46,12 @@ export const projects: Project[] = [
     slug: "leadstock-crm",
     title: "LeadStock CRM: multi-tenant sales for IT hardware resellers",
     kind: "project",
-    clientContext: "A SaaS product designed, built and deployed by Manish Sharma",
+    clientContext: "For IT hardware resellers: a live product to try",
     year: "Live product",
     serviceSlug: "web-development",
-    headline: "Leads, GST-ready quotations with live margin, follow-ups and orders in one platform, with tenant isolation enforced in the database.",
+    headline: "Run leads, GST-ready quotations with live margin, follow-ups and orders in one place, with every organisation's data kept separate.",
     summary:
-      "A multi-tenant CRM and quotation platform for IT hardware resellers. Each organisation runs its own role hierarchy, and Postgres Row Level Security keeps every tenant's data separate.",
+      "If you sell IT hardware, this is what one platform for the whole sales pipeline looks like: leads, quotations, follow-ups and orders, with each organisation seeing only its own data. It is a live product you can try.",
     tags: ["React 19", "TanStack Start", "TypeScript", "Supabase", "Postgres RLS", "Tailwind CSS"],
     metrics: [
       { value: "4 roles", label: "Owner, Admin, Manager and Salesperson in every organisation" },
@@ -55,34 +59,34 @@ export const projects: Project[] = [
       { value: "RLS", label: "Tenant isolation enforced in Postgres, not just the interface" },
     ],
     challenge:
-      "IT hardware sales teams juggle leads, follow-ups, GST-compliant quotations with margin maths, and delivery and invoicing. The goal was a single platform that covers that whole pipeline and is built as a SaaS from day one: many separate organisations on one system, each seeing only its own data.",
+      "If you sell IT hardware, you juggle leads, follow-ups, GST-compliant quotations with margin maths, and then delivery and invoicing. You need one place for that whole pipeline, and if you serve several organisations, each must see only its own data.",
     approach: [
       {
-        title: "Multi-tenant from day one",
+        title: "Every organisation stays separate",
         detail:
-          "A Platform Admin layer manages organisations, seats and subscriptions, while each organisation runs its own Owner, Admin, Manager and Salesperson hierarchy. Signup is invite-only, so organisations stay closed.",
+          "A Platform Admin layer manages organisations, seats and subscriptions, while each organisation runs its own Owner, Admin, Manager and Salesperson roles. Signup is invite-only, so only the people you invite get in.",
       },
       {
-        title: "Security at the database layer",
+        title: "Your data is protected where it is stored",
         detail:
-          "Every table is protected by Row Level Security policies keyed on the organisation and the user's role. Tenant isolation is enforced by Postgres itself, so a mistake in the interface cannot leak another organisation's data.",
+          "Every table is protected by Row Level Security policies keyed on the organisation and the user's role. Postgres itself enforces the separation, so a mistake in the interface cannot leak another organisation's data.",
       },
       {
-        title: "Typed, role-guarded application",
+        title: "Each person sees what their role allows",
         detail:
-          "TanStack Start renders on the server, TanStack Router guards routes by role, and TanStack Query caches and prefetches data through a typed API layer over Supabase, with React Hook Form and Zod validating input.",
+          "Pages are guarded by role, data loads quickly through a typed API layer over Supabase, and forms are validated before anything is saved. Built with TanStack Start, TanStack Router and Query, React Hook Form and Zod.",
       },
       {
-        title: "The whole sales workflow",
+        title: "The whole sales workflow in one place",
         detail:
-          "A lead is captured, followed up, turned into a quotation with GST and live margin and profit calculation, converted into an order when accepted, and then tracked through delivery and invoicing.",
+          "A lead is captured, followed up, turned into a quotation with GST and live margin and profit shown, converted into an order when accepted, and then tracked through delivery and invoicing.",
       },
     ],
     results: [
-      "Leads, customers, products, quotations, follow-ups, orders and reports in one platform.",
-      "GST-compliant quotations with live margin and profit calculation.",
-      "Isolated, invite-only organisations with four roles each, enforced end to end.",
-      "A working deployment on Vercel that you can try, with demo accounts for each role.",
+      "You manage leads, customers, products, quotations, follow-ups, orders and reports in one platform.",
+      "You see GST-compliant quotations with live margin and profit as you build them.",
+      "Your organisation is isolated and invite-only, with four roles and the separation enforced end to end.",
+      "You can try a working deployment on Vercel, with demo accounts for each role.",
     ],
     liveUrl: "https://lead-stock-pro.vercel.app",
   },
@@ -90,12 +94,12 @@ export const projects: Project[] = [
     slug: "gitlab-pipeline-rebuild",
     title: "Automating a production deployment pipeline end to end",
     kind: "case-study",
-    clientContext: "Production application at a software company, delivered in a previous role",
+    clientContext: "For a software company running production on AWS",
     year: "2025",
     serviceSlug: "devops",
-    headline: "Deployment efficiency improved by 90% by replacing a manual release process with GitLab CI/CD and Terraform.",
+    headline: "Releases went from a manual routine to fully automated, improving deployment efficiency by 90%.",
     summary:
-      "Took the delivery pipeline and AWS infrastructure of a production application from a manual deployment process to full automation, using GitLab CI/CD, Terraform and Kubernetes.",
+      "If shipping a release means following a manual routine, this is what changes. A production application on AWS moved from manual deployment to full automation with GitLab CI/CD, Terraform and Kubernetes.",
     tags: ["GitLab CI", "Docker", "Kubernetes", "AWS", "Terraform"],
     metrics: [
       { value: "90%", label: "Improvement in deployment efficiency" },
@@ -103,32 +107,32 @@ export const projects: Project[] = [
       { value: "Code-defined", label: "Infrastructure provisioned with Terraform" },
     ],
     challenge:
-      "Deployment was a manual process. The application ran in production on AWS, so the aim was to automate delivery end to end without putting reliability at risk.",
+      "Every release was a manual process. That is slow and risky, and it makes shipping a chore people put off. The application ran in production on AWS, so the goal was to automate delivery end to end without putting reliability at risk.",
     approach: [
       {
-        title: "Built the delivery pipeline",
+        title: "A release became a pipeline run",
         detail:
-          "Created and tuned GitLab CI/CD pipelines that carry the application from commit through to deployment, so a release is a pipeline run instead of a manual sequence.",
+          "GitLab CI/CD pipelines now carry the application from commit through to deployment, so releasing means running a pipeline instead of following a manual sequence.",
       },
       {
-        title: "Standardised the infrastructure",
+        title: "Infrastructure became repeatable",
         detail:
-          "Used Terraform to standardise how infrastructure is provisioned, so it is defined in code that can be reviewed and reproduced.",
+          "Terraform standardised how infrastructure is provisioned, so it is defined in code that can be reviewed and reproduced.",
       },
       {
-        title: "Kept it available under load",
+        title: "It stayed available under load",
         detail:
-          "Managed and scaled the AWS components the application relied on, and administered the Kubernetes clusters for high availability and fault tolerance.",
+          "The AWS components the application relied on were managed and scaled, and the Kubernetes clusters were administered for high availability and fault tolerance.",
       },
       {
-        title: "Measured the difference",
+        title: "The difference was measured",
         detail:
           "Deployment efficiency improved by 90% through end-to-end automation. That is the figure recorded for this work and the only one claimed on this page.",
       },
     ],
     results: [
       "Deployment efficiency improved by 90% through end-to-end automation.",
-      "Deployment moved from a manual process to full automation.",
+      "Releases moved from a manual process to full automation.",
       "Infrastructure provisioning was standardised with Terraform.",
     ],
   },
@@ -136,12 +140,12 @@ export const projects: Project[] = [
     slug: "terraform-migration",
     title: "Bringing hand-built cloud infrastructure under Terraform",
     kind: "worked-example",
-    clientContext: "Scenario: a team running production on infrastructure built by hand",
+    clientContext: "If your production was built by hand",
     year: "Example",
     serviceSlug: "cloud",
-    headline: "How a console-built AWS estate is moved into Terraform without taking anything down.",
+    headline: "How your hand-built AWS setup can move into Terraform without taking anything down.",
     summary:
-      "A representative walk-through of importing an existing AWS estate into Terraform, refactoring it into reusable modules and putting infrastructure changes through code review.",
+      "A walk-through of what happens when your existing AWS setup is imported into Terraform, tidied into reusable modules and brought under code review. It describes how the work goes, not a past client.",
     tags: ["Terraform", "AWS", "Infrastructure as code", "GitHub Actions"],
     metrics: [
       { value: "Import", label: "Existing resources adopted, not rebuilt" },
@@ -149,45 +153,45 @@ export const projects: Project[] = [
       { value: "Repeatable", label: "A new environment comes from code" },
     ],
     challenge:
-      "Imagine production built click by click over a couple of years by people who have since moved on. Nobody can list everything that exists, staging has drifted away from production, and creating a new environment is a project in itself. That situation is common, and it is exactly what infrastructure as code is meant to fix.",
+      "Picture your production built click by click over a couple of years by people who have since moved on. Nobody can list everything that exists, staging has drifted away from production, and creating a new environment is a project in itself. That situation is common, and it is exactly what infrastructure as code is meant to fix.",
     approach: [
       {
-        title: "Inventory what actually exists",
+        title: "You learn what actually exists",
         detail:
-          "Audit the live account against the team's mental model. Typical findings include unattached storage, oversized instances and network rules open wider than intended.",
+          "The live account is checked against your team's picture of it. Typical findings include unattached storage, oversized instances and network rules open wider than intended.",
       },
       {
-        title: "Import rather than rebuild",
+        title: "Your setup is imported, not rebuilt",
         detail:
-          "Bring existing resources into Terraform state with import blocks, so the migration never needs anything torn down and production keeps running throughout.",
+          "Existing resources are brought into Terraform with import blocks, so nothing is torn down and production keeps running throughout.",
       },
       {
-        title: "Refactor into modules",
+        title: "Repeated parts become modules",
         detail:
-          "Extract networking, compute and access control into parameterised modules, so environments differ by a variables file rather than by history.",
+          "Networking, compute and access control become parameterised modules, so your environments differ by a variables file instead of by history.",
       },
       {
-        title: "Move changes into review",
+        title: "Your changes go through review",
         detail:
-          "Run terraform plan on every pull request and apply from the protected branch, making infrastructure changes reviewable like any other code.",
+          "A terraform plan runs on every pull request and changes apply from the protected branch, so infrastructure changes are reviewed like any other code.",
       },
     ],
     results: [
-      "A new, fully configured environment becomes a repeatable command rather than a project.",
-      "Drift between staging and production stops accumulating, and CI flags it when it appears.",
-      "Cleanup found during the audit usually reduces cloud spend, and the audit shows how much.",
+      "You can create a new, fully configured environment with a repeatable command instead of a project.",
+      "Drift between staging and production stops building up, and CI flags it when it appears.",
+      "Cleanup found during the audit usually lowers your cloud spend, and the audit shows by how much.",
     ],
   },
   {
     slug: "go-service-build",
     title: "A Go service built to be operated from day one",
     kind: "worked-example",
-    clientContext: "Scenario: a team that needs an integration service its own engineers can run",
+    clientContext: "If you need an integration service your own team can run",
     year: "Example",
     serviceSlug: "web-development",
-    headline: "How a backend integration service is delivered with monitoring, tests and its deployment pipeline included.",
+    headline: "How you can receive a backend integration service with monitoring, tests and its release pipeline included.",
     summary:
-      "A representative walk-through of building a Go HTTP service that talks to third-party APIs, shipped with observability, failure-path tests, a runbook and CI/CD.",
+      "A walk-through of what you receive when a Go HTTP service that talks to third-party APIs is built for you: monitoring, failure-path tests, a runbook and CI/CD. It describes how the work goes, not a past client.",
     tags: ["Go", "MongoDB", "Docker", "Prometheus"],
     metrics: [
       { value: "Day-one ops", label: "Logging, metrics and health checks from the first version" },
@@ -195,32 +199,32 @@ export const projects: Project[] = [
       { value: "Handover", label: "Pipeline and runbook delivered with the code" },
     ],
     challenge:
-      "Picture a team that needs an integration service quickly and has been burned before by contract work that arrived as a bare repository: no deployment story, no monitoring, and no way for the in-house team to run it without a rewrite.",
+      "Picture needing an integration service quickly, after being burned before by contract work that arrived as a bare repository: no deployment story, no monitoring, and no way for your in-house team to run it without a rewrite.",
     approach: [
       {
-        title: "Contract first",
+        title: "You agree the contract first",
         detail:
-          "Agree the API surface and error behaviour up front, so the frontend team can build against a stub while the service is implemented.",
+          "The API surface and error behaviour are agreed up front, so your frontend team can build against a stub while the service is implemented.",
       },
       {
-        title: "Operations built in, not bolted on",
+        title: "It is built to be run, not just to work",
         detail:
-          "Structured logging, Prometheus metrics, health and readiness endpoints and graceful shutdown are part of the first working version, not a later milestone.",
+          "Structured logging, Prometheus metrics, health and readiness endpoints and graceful shutdown are in the first working version, not a later milestone.",
       },
       {
-        title: "Test the failure paths",
+        title: "The failure paths are tested",
         detail:
-          "Concentrate test effort on timeouts, retries and partial failures against the third-party APIs, which is where integration services actually break.",
+          "Test effort goes into timeouts, retries and partial failures against the third-party APIs, which is where integration services actually break.",
       },
       {
-        title: "Ship it, not just write it",
+        title: "You receive it running, not just written",
         detail:
-          "Deliver the containerised build and the pipeline that deploys it, so handover is a walkthrough rather than a migration.",
+          "You receive the containerised build and the pipeline that deploys it, so handover is a walkthrough rather than a migration.",
       },
     ],
     results: [
-      "The service reaches production in the same engagement it is built in.",
-      "The in-house team can own it after a single handover session.",
+      "Your service reaches production in the same project it is built in.",
+      "Your in-house team can own it after a single handover session.",
       "Dashboards and alerts exist before the first real traffic arrives.",
     ],
   },

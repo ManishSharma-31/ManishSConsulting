@@ -1,16 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { seo } from "@/lib/seo";
 import { organizationGraph, faqLd } from "@/lib/schema";
-import { ArrowUpRight, ArrowRight, Check, MapPin } from "lucide-react";
+import { ArrowUpRight, ArrowRight, MapPin } from "lucide-react";
 import hero from "@/assets/hero.webp";
 import { site, audiences } from "@/content/site";
 import { services } from "@/content/services";
 import { projects } from "@/content/projects";
-import { results, differentiators, certifications } from "@/content/credentials";
+import { results, differentiators } from "@/content/credentials";
 import { processSteps } from "@/content/process";
 import { faqs } from "@/content/faq";
 import { serviceImages, projectImages } from "@/lib/images";
 import { Section, SectionTitle, CtaBand } from "@/components/site/Layout";
+import { audienceIcons, stepIcons } from "@/components/site/icons";
 import { HeroScene } from "@/components/fx/HeroScene";
 import { CountUp, Magnetic, Reveal, TiltCard, WordReveal } from "@/components/fx/motion";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -18,9 +19,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 export const Route = createFileRoute("/")({
   head: () =>
     seo({
-      title: "Manish S Consulting | IT Consulting & Technology Solutions",
+      title: "SunCrest Technology | IT Consulting & Technology Solutions",
       description:
-        "Independent IT consulting for businesses of every size and individuals: web, software, cloud, automation, AI and IT support. Fixed prices, written scope.",
+        "Get your IT sorted by one expert: websites, software, cloud, automation, AI and support for individuals and businesses. Fixed price, written plan, free 30-minute call.",
       path: "/",
       jsonLd: [organizationGraph(), faqLd()],
     }),
@@ -47,27 +48,27 @@ function Index() {
             {site.availability.label} · {site.availability.detail}
           </p>
           <h1 className="max-w-5xl font-display text-[clamp(3rem,8vw,7.5rem)] font-semibold leading-[0.95] tracking-tighter">
-            <WordReveal text="Every kind of IT solution." />
+            <WordReveal text="IT that just works." />
             <br />
             {/* Gradient text lives on its own element (not on animated children) so every browser paints it. */}
             <span className="animate-rise inline-block pb-[0.1em] [animation-delay:0.3s]">
-              <span className="font-serif font-normal italic text-shine">One expert to call.</span>
+              <span className="font-serif font-normal italic text-shine">Handled by one expert you can call.</span>
             </span>
           </h1>
           <p className="animate-rise mt-8 max-w-2xl text-lg text-muted-foreground [animation-delay:0.5s] md:text-xl">
-            Manish S Consulting is an independent IT consulting practice for businesses of every size and for individuals. Websites and software,
-            cloud and DevOps, automation, AI and everyday IT support, planned in writing, built properly and looked after by the{" "}
-            <em className="text-foreground not-italic">same person</em> from first call to handover.
+            Need a website, a cloud setup, automation, AI or everyday IT help? You get one expert who plans it with you in writing, builds it
+            properly and looks after it afterwards, so you deal with the{" "}
+            <em className="text-foreground not-italic">same person</em> from first call to handover. Individuals and businesses of every size are welcome.
           </p>
           <div className="animate-rise mt-10 flex flex-wrap items-center gap-4 [animation-delay:0.65s]">
             <Magnetic>
               <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 font-semibold text-primary-foreground transition hover:shadow-glow">
-                Book a free 30-min call <ArrowUpRight className="size-5" />
+                Get your free 30-minute plan <ArrowUpRight className="size-5" />
               </Link>
             </Magnetic>
             <Magnetic strength={0.15}>
               <Link to="/work" className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-7 py-4 font-medium transition hover:border-primary">
-                See the work <ArrowRight className="size-4" />
+                See how problems get solved <ArrowRight className="size-4" />
               </Link>
             </Magnetic>
           </div>
@@ -95,9 +96,9 @@ function Index() {
       {/* SERVICES */}
       <Section>
         <SectionTitle
-          eyebrow="What we do"
-          title={<>Every kind of IT. <span className="font-serif italic text-muted-foreground">One point of contact.</span></>}
-          intro="From a first website to a full cloud migration, one expert plans it, builds it and looks after it. Not sure what you need? Start with a conversation."
+          eyebrow="What you can get"
+          title={<>Every kind of IT. <span className="font-serif italic text-muted-foreground">One person to call.</span></>}
+          intro="From a first website to a full cloud migration, you deal with one expert who plans it, builds it and looks after it. Not sure what you need? Start with a conversation."
         />
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => {
@@ -122,7 +123,7 @@ function Index() {
                   <h3 className="mt-3 font-display text-2xl font-semibold">{s.name}</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{s.headline}.</p>
                   <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
-                    Explore <ArrowRight className="size-4 transition group-hover:translate-x-1" />
+                    See how it helps <ArrowRight className="size-4 transition group-hover:translate-x-1" />
                   </span>
                 </div>
               </Link>
@@ -137,8 +138,8 @@ function Index() {
       <section className="border-y border-border bg-surface">
         <Section>
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionTitle eyebrow="Selected work" title={<>How the work <span className="font-serif italic text-gradient">actually gets done.</span></>} />
-            <Link to="/work" className="mb-14 inline-flex items-center gap-2 text-sm font-medium hover:text-primary">All work <ArrowRight className="size-4" /></Link>
+            <SectionTitle eyebrow="See it in practice" title={<>How problems like yours <span className="font-serif italic text-gradient">get solved.</span></>} />
+            <Link to="/work" className="mb-14 inline-flex items-center gap-2 text-sm font-medium hover:text-primary">See all examples <ArrowRight className="size-4" /></Link>
           </div>
           <div className="grid gap-6 lg:grid-cols-3">
             {projects.slice(0, 3).map((p, i) => (
@@ -173,15 +174,15 @@ function Index() {
           <div className="relative">
             <div className="glow-lime absolute -inset-16" />
             <div className="relative overflow-hidden rounded-3xl border border-border">
-              <img src="/profile-1000.jpg" alt="Manish Sharma, founder" loading="lazy" className="aspect-[4/5] w-full object-cover" />
+              <img src="/profile-1000.jpg" alt="Manish Sharma, your point of contact" loading="lazy" className="aspect-[4/5] w-full object-cover" />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/70 to-transparent p-6">
                 <p className="font-display text-2xl font-semibold">Manish Sharma</p>
-                <p className="flex items-center gap-1.5 text-sm text-muted-foreground"><MapPin className="size-4" /> Founder · {site.location}</p>
+                <p className="flex items-center gap-1.5 text-sm text-muted-foreground"><MapPin className="size-4" /> Your point of contact · {site.location}</p>
               </div>
             </div>
           </div>
           <div>
-            <SectionTitle eyebrow="Why work with us" title={<>Small on purpose. <span className="font-serif italic text-gradient">Accountable by design.</span></>} />
+            <SectionTitle eyebrow="What you can count on" title={<>One expert, <span className="font-serif italic text-gradient">accountable to you.</span></>} />
             <div className="grid gap-6 sm:grid-cols-2">
               {differentiators.map((d, i) => (
                 <Reveal key={d.title} delay={i * 0.07}>
@@ -195,11 +196,6 @@ function Index() {
                 </Reveal>
               ))}
             </div>
-            <div className="mt-8 flex flex-wrap gap-2">
-              {certifications.map((c) => (
-                <span key={c.title} className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5 text-xs"><Check className="size-3.5 text-primary" />{c.title}</span>
-              ))}
-            </div>
           </div>
         </div>
       </Section>
@@ -207,28 +203,37 @@ function Index() {
       {/* PROCESS */}
       <section className="border-y border-border bg-surface">
         <Section>
-          <SectionTitle eyebrow="How it works" title={<>From first call to handover in <span className="font-serif italic text-gradient">four steps.</span></>} />
+          <SectionTitle eyebrow="What happens next" title={<>From your first call to handover in <span className="font-serif italic text-gradient">four steps.</span></>} />
           <ol className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-4">
-            {processSteps.map((s) => (
+            {processSteps.map((s, i) => {
+              const StepIcon = stepIcons[i]!;
+              return (
               <li key={s.step} className="group bg-card p-7 transition-colors duration-500 hover:bg-secondary">
-                <span className="inline-block font-display text-5xl font-semibold text-gradient transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-110">{s.step}</span>
+                <div className="flex items-start justify-between">
+                  <span className="inline-block font-display text-5xl font-semibold text-gradient transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-110">{s.step}</span>
+                  <span className="grid size-11 place-items-center rounded-xl bg-primary/10 text-primary"><StepIcon className="size-5" /></span>
+                </div>
                 <h3 className="mt-6 font-display text-xl font-semibold">{s.title}</h3>
                 <p className="mt-1 font-mono text-xs text-primary">{s.duration}</p>
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{s.detail}</p>
               </li>
-            ))}
+              );
+            })}
           </ol>
         </Section>
       </section>
 
       {/* INDUSTRIES */}
       <Section>
-        <SectionTitle eyebrow="Who we help" title="Whoever you are, technology done right." intro="Individuals, small businesses and large organisations all get the same careful process: a free call, a written scope and a fixed price." />
+        <SectionTitle eyebrow="Who this is for" title="Whoever you are, you get technology done right." intro="Whether you are an individual or a large organisation, you get the same careful process: a free call, a written scope and a fixed price." />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {audiences.map((ind, i) => (
             <Reveal key={ind.name} delay={(i % 3) * 0.06}>
               <div className="group h-full rounded-2xl border border-border p-6 transition duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-card">
-                <h3 className="font-display text-lg font-semibold group-hover:text-primary">{ind.name}</h3>
+                <span className="grid size-11 place-items-center rounded-xl bg-primary/10 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
+                  {(() => { const AudienceIcon = audienceIcons[i]!; return <AudienceIcon className="size-5" />; })()}
+                </span>
+                <h3 className="mt-4 font-display text-lg font-semibold group-hover:text-primary">{ind.name}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{ind.detail}</p>
               </div>
             </Reveal>
@@ -239,7 +244,7 @@ function Index() {
       {/* FAQ */}
       <section className="border-t border-border">
         <Section className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <SectionTitle eyebrow="FAQ" title={<>Questions, <span className="font-serif italic text-gradient">answered.</span></>} intro="Everything clients usually ask before getting started. The full list is on the FAQ page." />
+          <SectionTitle eyebrow="FAQ" title={<>Questions, <span className="font-serif italic text-gradient">answered.</span></>} intro="Everything people usually ask before getting started. The full list is on the FAQ page." />
           <Accordion type="single" collapsible className="w-full">
             {faqs.slice(0, 7).map((f, i) => (
               <AccordionItem key={i} value={`f${i}`}>

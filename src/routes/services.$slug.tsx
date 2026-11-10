@@ -9,6 +9,7 @@ import { getService, services } from "@/content/services";
 import { serviceImages } from "@/lib/images";
 import { Reveal, TiltCard } from "@/components/fx/motion";
 import { PageHero, Section, CtaBand } from "@/components/site/Layout";
+import { ServiceIllustration } from "@/components/site/ServiceIllustration";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/services/$slug")({
@@ -19,7 +20,7 @@ export const Route = createFileRoute("/services/$slug")({
   },
   head: ({ loaderData }) => {
     const s = loaderData ? getService(loaderData.slug) : undefined;
-    if (!s) return { meta: [{ title: "Service not found | Manish S Consulting" }, { name: "robots", content: "noindex" }] };
+    if (!s) return { meta: [{ title: "Service not found | SunCrest Technology" }, { name: "robots", content: "noindex" }] };
     return seo({
       title: s.seoTitle,
       description: s.metaDescription,
@@ -50,9 +51,12 @@ function ServicePage() {
         <Link to="/services" className="mb-10 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"><ArrowLeft className="size-4" /> All services</Link>
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
           <div>
+            <Reveal className="mb-12">
+              <ServiceIllustration slug={s.slug} />
+            </Reveal>
             <h2 className="eyebrow">{s.name}: the problem</h2>
             <p className="mt-4 text-xl leading-relaxed">{s.body.problem}</p>
-            <h2 className="eyebrow mt-14">{s.name}: what's included</h2>
+            <h2 className="eyebrow mt-14">{s.name}: what you can get</h2>
             <div className="mt-6 grid gap-4">
               {s.capabilities.map((c) => (
                 <Reveal key={c.name}>
@@ -65,7 +69,7 @@ function ServicePage() {
                 </Reveal>
               ))}
             </div>
-            <h2 className="eyebrow mt-14">{s.name}: how we approach it</h2>
+            <h2 className="eyebrow mt-14">{s.name}: how it works for you</h2>
             <ol className="mt-6 space-y-6">
               {s.body.approach.map((a, i) => (
                 <li key={a.title}>
@@ -81,7 +85,7 @@ function ServicePage() {
             </ol>
             <Reveal className="mt-14">
             <blockquote className="rounded-3xl border border-primary/30 bg-accent p-8">
-              <p className="eyebrow">Our position</p>
+              <p className="eyebrow">Worth knowing</p>
               <p className="mt-3 font-serif text-3xl italic leading-snug">"{s.stance.claim}"</p>
               <p className="mt-4 text-muted-foreground">{s.stance.detail}</p>
             </blockquote>
@@ -101,7 +105,7 @@ function ServicePage() {
 
             {related.length > 0 && (
               <>
-                <h2 className="eyebrow mt-14">Related work</h2>
+                <h2 className="eyebrow mt-14">See it in practice</h2>
                 <div className="mt-4 grid gap-4">
                   {related.map((p) => (
                     <Reveal key={p.slug}>
@@ -139,7 +143,7 @@ function ServicePage() {
             </Reveal>
             <Reveal delay={0.15}>
             <div className="rounded-2xl border border-border bg-card p-6">
-              <h3 className="font-display text-lg font-semibold">Ideal if</h3>
+              <h3 className="font-display text-lg font-semibold">This is for you if</h3>
               <ul className="mt-3 space-y-3">
                 {s.idealFor.map((d) => <li key={d} className="flex gap-2.5 text-sm text-muted-foreground"><Check className="mt-0.5 size-4 shrink-0 text-primary" />{d}</li>)}
               </ul>
@@ -147,7 +151,7 @@ function ServicePage() {
             </Reveal>
             <Reveal delay={0.2}>
             <div className="rounded-2xl border border-border p-6">
-              <h3 className="font-display text-lg font-semibold">Not a fit for</h3>
+              <h3 className="font-display text-lg font-semibold">Probably not for you if</h3>
               <ul className="mt-3 space-y-3">
                 {s.notFor.map((d) => <li key={d} className="flex gap-2.5 text-sm text-muted-foreground"><X className="mt-0.5 size-4 shrink-0 text-destructive" />{d}</li>)}
               </ul>

@@ -1,8 +1,8 @@
-# Manish S Consulting
+# SunCrest Technology
 
-> Independent IT consulting and technology solutions for businesses of every size and for individuals. Websites and software, cloud, DevOps, automation, AI and everyday IT support from one accountable expert. Fixed prices, written scope.
+> Get your IT sorted by one expert you can reach: websites and software, cloud, DevOps, automation, AI and everyday IT support, for individuals and businesses of every size. Fixed prices, written scope.
 
-Manish S Consulting is a sole-proprietor consultancy run by Manish Sharma. It is deliberately small: the person you brief is the person who builds and runs the work. Engagements are scoped in writing and priced up front. There is a free 30-minute discovery call, and replies arrive within 24 hours on weekdays.
+SunCrest Technology is a sole-proprietor consultancy run by Manish Sharma. It is deliberately small, so the person a client briefs is the person who builds and runs the work. Every project is scoped in writing and priced up front. There is a free 30-minute discovery call, and replies arrive within 24 hours on weekdays.
 
 Website: https://www.manishsconsulting.tech
 Contact: info@manishsconsulting.tech
@@ -37,7 +37,7 @@ The client owns all code, configuration and documentation.
 LeadStock CRM is a real product. The pipeline entry is real work delivered in a previous role, and its 90% figure is the one that was measured. The last two are worked examples: representative scenarios that describe no real client and list no results.
 
 ## Company
-- [About](https://www.manishsconsulting.tech/about): how the consultancy works, principles, process and commitments
+- [About](https://www.manishsconsulting.tech/about): what clients can expect, who they work with, the process and the guarantees in writing
 - [All work](https://www.manishsconsulting.tech/work)
 - [Contact and booking](https://www.manishsconsulting.tech/contact)
 - [FAQ](https://www.manishsconsulting.tech/faq): scope, pricing, process, ownership, NDAs and handover

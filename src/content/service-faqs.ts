@@ -15,28 +15,28 @@ const list = (items: string[]) => (items.length > 1 ? `${items.slice(0, -1).join
 export function serviceFaqs(s: Service): ServiceFaq[] {
   return [
     {
-      question: `What does ${s.name} include?`,
-      answer: `${s.name} covers:\n${bullets(s.capabilities.map((c) => c.name))}\nEach engagement starts with a written scope, so you know exactly what is included before any work begins.`,
+      question: `What will I get with ${s.name}?`,
+      answer: `${s.name} can cover:\n${bullets(s.capabilities.map((c) => c.name))}\nEvery project starts with a written scope, so you know exactly what is included before any work begins.`,
     },
     {
-      question: `How long does ${s.name} take?`,
-      answer: `${s.typicalTimeline}. The firm date comes from the written scope agreed after a free 30-minute discovery call.`,
+      question: `How long will ${s.name} take?`,
+      answer: `${s.typicalTimeline}. You get a firm date in the written scope that follows a free 30-minute discovery call.`,
     },
     {
-      question: `What do I receive at the end of a ${s.name} engagement?`,
+      question: `What will I have at the end of a ${s.name} project?`,
       answer: `You receive:\n${bullets(s.deliverables)}`,
     },
     {
-      question: `Who is ${s.name} a good fit for?`,
-      answer: `It is a good fit if you recognise any of these:\n${bullets(s.idealFor)}`,
+      question: `Is ${s.name} right for me?`,
+      answer: `It is a good fit if you recognise yourself in any of these:\n${bullets(s.idealFor)}`,
     },
     {
-      question: `When is ${s.name} not the right fit?`,
-      answer: `It is usually not the right fit for:\n${bullets(s.notFor)}\nIf that describes your situation, we will say so on the first call and point you to a better option.`,
+      question: `When is ${s.name} not right for me?`,
+      answer: `It is usually not right if:\n${bullets(s.notFor)}\nIf that sounds like you, we will say so on the first call and point you to a better option.`,
     },
     {
-      question: `Which technologies do you use for ${s.name}?`,
-      answer: `Typical tools for this work include ${list(s.stack)}. We pick the simplest proven option that suits your team, not the newest one.`,
+      question: `Which technologies will be used for ${s.name}?`,
+      answer: `Typical tools for this work include ${list(s.stack)}. The aim is the simplest proven option that suits your team, not the newest one.`,
     },
   ];
 }

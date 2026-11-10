@@ -12,14 +12,16 @@ import {
  * Six service areas, presented as peers and ordered from the most widely
  * needed to the most specialist. Nothing in the layout ranks one above another.
  *
- * `name` is the plain, searchable label used in navigation, footers and form
+ * Copy is written from the visitor's side: their problem first, the outcome
+ * they get second, and the method only as far as it builds confidence. `name`
+ * is the plain, searchable label used in navigation, footers and form
  * dropdowns. `headline` is the outcome-led line used as the page H1.
  */
 export type Service = {
   slug: string;
   /** Plain label — nav, footer, dropdowns. */
   name: string;
-  /** Outcome-led page headline. */
+  /** Outcome-led page headline, phrased as what the visitor gets. */
   headline: string;
   /** Keyword-led line that carries the search traffic. */
   subtitle: string;
@@ -31,12 +33,13 @@ export type Service = {
   icon: LucideIcon;
   /** The concrete things inside this service — what people actually buy. */
   capabilities: { name: string; detail: string }[];
-  /** Circumstances where this service is the right call. */
+  /** Situations the visitor may recognise as their own. */
   idealFor: string[];
+  /** What the visitor receives at the end. */
   deliverables: string[];
-  /** Explicitly out of scope. Filters enquiries and buys trust. */
+  /** Situations where this is not the right answer for the visitor. Filters enquiries and buys trust. */
   notFor: string[];
-  /** A real position. Being wrong for some readers is the point. */
+  /** A candid point the visitor should know before they start. */
   stance: { claim: string; detail: string };
   stack: string[];
   typicalTimeline: string;
@@ -51,347 +54,347 @@ export const services: Service[] = [
   {
     slug: "web-development",
     name: "Web Development",
-    headline: "Web applications built to be maintained, not just launched",
+    headline: "A website or web app you can rely on, and change without fear",
     subtitle: "Web development — React, Next.js, Node, Go, and API engineering",
-    seoTitle: "Website & Web Application Development | Manish S Consulting",
+    seoTitle: "Website & Web Application Development | SunCrest Technology",
     metaDescription:
-      "Custom websites, web apps, APIs and online stores built to be maintained, for individuals, businesses and teams. Fixed price, written scope.",
+      "Get a fast, easy-to-maintain website, web app, API or online store from one expert, whether you are an individual or a business. Fixed price, written scope.",
     summary:
-      "Websites, web applications, and APIs built properly the first time: fast, accessible, tested, and deployed through a pipeline so the second release is as safe as the first.",
+      "You get a website, web application or API that loads fast, works for everyone and is easy to update. It goes live through a proper release process, so your second release is as safe as your first.",
     icon: Globe,
     capabilities: [
       {
         name: "Web applications",
         detail:
-          "Customer portals, dashboards, booking systems, internal platforms — full-stack builds with authentication, roles, and the admin surface your team will need on day two.",
+          "Customer portals, dashboards, booking systems and internal platforms, with logins, roles and the admin tools your team will need from day two.",
       },
       {
         name: "Marketing sites and landing pages",
         detail:
-          "Fast, accessible, properly structured for search, with a CMS your marketing people can use without filing a ticket.",
+          "Fast, search-friendly pages that you or your team can edit without waiting for a developer.",
       },
       {
         name: "APIs and backend services",
         detail:
-          "REST and GraphQL services in Go, Python, or Node, with schema design, migrations, structured logging, and health checks built in from the start.",
+          "Dependable services behind your app or your integrations, with clear data design, logging and health checks so problems show up early.",
       },
       {
         name: "E-commerce",
         detail:
-          "Storefronts, payment integration, inventory sync, and the operational tooling that keeps order flow visible when volume spikes.",
+          "An online store with payments, stock sync and the tools to see your orders clearly when volume spikes.",
       },
       {
         name: "Performance and accessibility work",
         detail:
-          "Fixing sites that are slow or unusable with a keyboard or screen reader — measured before and after, not asserted.",
+          "Fix a site that is slow, or hard to use with a keyboard or screen reader. You see the numbers before and after, not just a promise.",
       },
     ],
     idealFor: [
-      "A first product that needs building properly, once, rather than rebuilt in a year",
-      "An existing application nobody wants to touch because changes break things",
-      "A site losing customers to load time or failing an accessibility review",
-      "Agencies needing engineering capacity under their own brand",
+      "You need a first product built properly, once, instead of rebuilt in a year",
+      "Your current application is one nobody wants to touch because changes break things",
+      "Your site is losing customers to slow load times or failing an accessibility review",
+      "You run an agency and need engineering capacity under your own brand",
     ],
     deliverables: [
-      "Deployed application with staging and production environments",
-      "Test coverage on the paths whose failure would actually cost you money",
-      "CI/CD pipeline, so the release after ours is as safe as ours",
-      "Performance and accessibility measured against real budgets, not left to chance",
-      "Documentation and handover to whoever maintains it next",
+      "Your application live, with separate staging and production environments",
+      "Tests on the paths where a failure would actually cost you money",
+      "An automated release process, so every future update is as safe as the first",
+      "Speed and accessibility measured against real targets",
+      "Documentation and a walkthrough for whoever looks after it next",
     ],
     notFor: [
-      "Pixel-matching a design with no regard for whether it can be maintained",
-      "Rescuing a project mid-flight from another team without a paid review first — going in blind helps nobody",
-      "Native mobile apps; we will point you to someone who does them well",
+      "You want a design copied pixel for pixel, whether or not it can be maintained",
+      "You want another team's half-finished project rescued without a paid review first. Going in blind helps nobody",
+      "You need a native mobile app. You will get a recommendation for someone who builds them well",
     ],
     stance: {
-      claim: "A framework choice is not an architecture.",
+      claim: "Your choice of framework matters less than you think.",
       detail:
-        "Most web projects do not fail because the wrong framework was picked. They fail because nobody decided how state is managed, where the boundaries are, or how it gets deployed — and those decisions got made accidentally, one pull request at a time, until changing anything became expensive.",
+        "Most web projects do not go wrong because the wrong framework was picked. They go wrong because nobody decided how data is handled, where the boundaries sit or how releases happen. Those choices get made by accident, one change at a time, until every update is expensive. You are better off settling them at the start.",
     },
     stack: ["React", "Next.js", "TypeScript", "Node.js", "Go", "Python", "PostgreSQL", "MongoDB"],
     typicalTimeline: "3-12 weeks depending on scope",
     body: {
       problem:
-        "Plenty of agencies will build you a web application. Far fewer will hand over something your next engineer can work on. The difference shows up six months later, when a small change turns out to require touching nine files, there are no tests around the part that matters, and deploying means someone following a document.",
+        "Plenty of agencies will build you a web application. Far fewer hand over something the next developer can work on. You find the difference six months later, when a small change touches nine files, nothing is tested where it matters and every release depends on someone following a document.",
       approach: [
         {
-          title: "Agree the shape before writing code",
+          title: "You agree the shape before any code is written",
           detail:
-            "Data model, boundaries, and how it will be deployed. These are cheap decisions to make deliberately and expensive to make by accident.",
+            "How your data is organised, where the boundaries sit and how releases will work. These decisions are cheap to make on purpose and expensive to make by accident.",
         },
         {
-          title: "Build the deployment path first",
+          title: "Your release path exists before there is much to release",
           detail:
-            "Staging and production, with a pipeline, before there is much to deploy. Code that has not been deployed is not finished, and leaving it to the end guarantees a bad week.",
+            "Staging and production are set up early, so launch day is routine instead of a bad week.",
         },
         {
-          title: "Ship in visible increments",
+          title: "You see working software every week",
           detail:
-            "Working software you can click through every week, rather than a long silence followed by a reveal.",
+            "You click through real progress as it happens, instead of waiting through a long silence for a big reveal.",
         },
         {
-          title: "Test what would cost you money",
+          title: "The parts that cost you money get tested",
           detail:
-            "Not a coverage percentage. Authentication, payments, data integrity, and the flows your business depends on.",
+            "Logins, payments, data integrity and the flows your business depends on. Not a coverage number for show.",
         },
         {
-          title: "Hand over so it survives us",
+          title: "You get a handover that lasts",
           detail:
-            "Documentation, a walkthrough, and a codebase organised so the next developer can find things.",
+            "Documentation, a walkthrough and a codebase the next developer can find their way around.",
         },
       ],
       outcome:
-        "An application in production that your team can change without fear, with the pipeline, tests, and documentation that make the second year cheaper than the first.",
+        "An application in production that you and your team can change without fear, with the release process, tests and documentation that make year two cheaper than year one.",
     },
   },
   {
     slug: "it-solutions",
     name: "IT Solutions & Support",
-    headline: "Technical judgement on call, without a full-time hire",
+    headline: "Expert IT help on call, without hiring full time",
     subtitle: "IT consulting, managed support, and technical due diligence",
-    seoTitle: "IT Consulting & Support Services | Manish S Consulting",
+    seoTitle: "IT Consulting & Support Services | SunCrest Technology",
     metaDescription:
-      "Managed IT support, technical advice and due diligence for businesses and individuals, without a full-time hire. Fixed price, written scope.",
+      "Get managed IT support, honest technical advice and independent due diligence without a full-time hire. For individuals and businesses. Fixed price, written scope.",
     summary:
-      "Ongoing IT help for businesses and individuals without in-house technical staff: maintenance, monitoring, upgrades, security hygiene, and someone to ask before decisions get made.",
+      "Ongoing help for individuals and businesses without in-house technical staff: upkeep, monitoring, upgrades, security basics, and someone to ask before you make a decision.",
     icon: Headphones,
     capabilities: [
       {
         name: "Managed maintenance",
         detail:
-          "Dependency and security updates, certificate renewals, backup verification, and the upkeep that only becomes visible when it has been skipped for a year.",
+          "Security updates, certificate renewals, backup checks and the upkeep that only becomes visible once it has been skipped for a year. Handled before it becomes your problem.",
       },
       {
         name: "Technical advisory",
         detail:
-          "Architecture decisions, vendor and build-versus-buy evaluations, and hiring input — available before the decision is made rather than after.",
+          "A second opinion on architecture, vendors, build-versus-buy and hiring, available before you commit rather than after.",
       },
       {
         name: "Technical due diligence",
         detail:
-          "Independent review of a codebase or infrastructure you are about to acquire, invest in, or inherit, written for people who need to make a decision.",
+          "An independent review of a codebase or infrastructure you are about to buy, invest in or inherit, written so you can make the decision.",
       },
       {
         name: "Security hygiene",
         detail:
-          "Access review, secrets handling, dependency vulnerabilities, backup and restore testing, and the infrastructure answers procurement will ask for.",
+          "Who has access to what, how secrets are stored, which dependencies are vulnerable, and whether your backups actually restore. Plus the answers a customer's security questionnaire will ask for.",
       },
       {
         name: "Inherited system rescue",
         detail:
-          "Documenting and stabilising software nobody currently understands, so you have options other than a rewrite.",
+          "Software nobody on your team understands, documented and stabilised, so a rewrite is not your only option.",
       },
     ],
     idealFor: [
-      "A business running critical software with no in-house engineer",
-      "Systems built by a contractor who is no longer available",
-      "Needing cover while you recruit for a technical role",
-      "Wanting an independent opinion before committing real money",
+      "You run critical software and have no in-house engineer",
+      "The contractor who built your systems is no longer available",
+      "You need cover while you recruit for a technical role",
+      "You want an independent opinion before committing real money",
     ],
     deliverables: [
       "An agreed number of days each month, planned with you at the start of it",
-      "Monitoring and alerting so problems surface before customers report them",
-      "Written monthly summary of what changed and what is coming",
-      "Documentation that accumulates through the engagement rather than arriving at the end",
-      "A named point of contact with context on your systems",
+      "Monitoring and alerts, so you hear about problems before your customers do",
+      "A short written summary each month of what changed and what is coming",
+      "Documentation that builds up as we go, rather than arriving at the end",
+      "One named person who already knows your systems",
     ],
     notFor: [
-      "Round-the-clock on-call staffing — instead, we help you design a rotation and write the runbooks it depends on",
-      "Desktop, printer, and end-user helpdesk support; we work on systems, not workstations",
-      "Organisations large enough to need a staffed internal platform team",
+      "You need round-the-clock on-call staffing. You can get help designing a rotation and the runbooks it depends on, but not the rotation itself",
+      "You need desktop, printer or end-user helpdesk support. This service covers systems, not workstations",
+      "You are a large organisation with a staffed internal platform team",
     ],
     stance: {
-      claim: "A good retainer should shrink over time.",
+      claim: "A good support plan should need less of your budget over time.",
       detail:
-        "If you need the same number of days from us in month twelve as in month one, we have been maintaining a dependency rather than building capability. Every retainer we run has handover built into it.",
+        "If you need the same number of days in month twelve as in month one, you are paying to maintain a dependency instead of building capability. Every plan here includes handover, so your systems get easier to run and your internal team, when you hire one, inherits something documented.",
     },
     stack: ["AWS", "Linux", "Terraform", "Docker", "Grafana", "PostgreSQL", "MySQL"],
     typicalTimeline: "Rolling monthly, cancel with 30 days' notice",
     body: {
       problem:
-        "Between having no technical needs and being able to justify a full-time engineering hire there is a long, awkward stretch. During it, critical systems have no owner, maintenance is deferred until it becomes an incident, and significant technical decisions get made by whoever is available rather than whoever knows.",
+        "Between having no technical needs and being able to justify a full-time engineer there is a long, awkward stretch. During it, important systems have no owner, upkeep waits until it becomes an incident, and big technical decisions get made by whoever happens to be around instead of whoever knows.",
       approach: [
         {
-          title: "Understand the estate first",
+          title: "Your systems get documented first",
           detail:
-            "Before committing to a retainer, we document what you are actually running. Retainers that start without this turn into expensive guesswork.",
+            "Before any ongoing plan starts, what you actually run is written down. Support that begins without this turns into expensive guesswork.",
         },
         {
-          title: "Plan the month up front",
+          title: "Each month is planned with you",
           detail:
-            "We agree at the start of each month what the days go on. No open-ended time and no surprise invoices.",
+            "You agree at the start of the month what the days go on. No open-ended time and no surprise invoices.",
         },
         {
-          title: "Fix causes, not tickets",
+          title: "Causes get fixed, not just tickets",
           detail:
-            "Recurring work gets automated rather than repeated. The list of things needing us should get shorter.",
+            "Repeat problems are automated away, so your list of things that need attention keeps getting shorter.",
         },
         {
-          title: "Be available before decisions",
+          title: "You can ask before you decide",
           detail:
-            "The cheapest technical advice is given before the thing is built. Retainer clients get us in the conversation early.",
+            "The cheapest technical advice is the kind you get before something is built. You get included in that conversation early.",
         },
       ],
       outcome:
-        "Your systems have an owner, maintenance stops accumulating into incidents, and there is someone with context to ask before a decision gets made. When you do hire internally, they inherit a documented system rather than a mystery.",
+        "Your systems have an owner, upkeep stops piling up into incidents, and you have someone with context to ask before a decision is made. When you do hire internally, they inherit a documented system and not a mystery.",
     },
   },
   {
     slug: "cloud",
     name: "Cloud",
-    headline: "Cloud systems that stay reliable, affordable and rebuildable",
+    headline: "Cloud systems that stay reliable, affordable and easy to rebuild",
     subtitle: "AWS cloud architecture, migration, Terraform, and cost optimisation",
-    seoTitle: "Cloud Consulting & Migration Services | Manish S Consulting",
+    seoTitle: "Cloud Consulting & Migration Services | SunCrest Technology",
     metaDescription:
-      "Cloud architecture, migration, infrastructure as code and cost optimisation on AWS, designed to be reliable and affordable. Fixed price, written scope.",
+      "Get reliable, affordable cloud on AWS: architecture, migration, infrastructure as code and cost cuts that do not trade away stability. Fixed price, written scope.",
     summary:
-      "Architecture, migration, and cost work on AWS — with everything defined in Terraform so environments are reproducible and changes get reviewed like code.",
+      "Your cloud setup designed, moved or tidied on AWS, with everything written as code so you can rebuild it, review changes and explain your bill.",
     icon: Cloud,
     capabilities: [
       {
         name: "Cloud architecture and setup",
         detail:
-          "Networking, compute, storage, and IAM designed for what you actually run, with a security baseline that will survive a customer's review.",
+          "Networking, servers, storage and access designed around what you actually run, with a security baseline that will hold up when a customer reviews it.",
       },
       {
         name: "Migration to AWS",
         detail:
-          "Moving from on-premise or another provider, planned in stages so there is no single high-risk cutover night.",
+          "Move from on-premise or another provider in stages, so you never face a single high-risk cutover night.",
       },
       {
         name: "Infrastructure as code",
         detail:
-          "Existing hand-built infrastructure imported into Terraform without downtime, refactored into modules so a new environment is a variables file.",
+          "Your hand-built infrastructure brought under Terraform without downtime, so a new environment is a settings file instead of a project.",
       },
       {
         name: "Cost optimisation",
         detail:
-          "A fixed-price audit producing a ranked list of savings with a figure and a risk note against each item, plus tagging so spend stays attributable afterwards.",
+          "A fixed-price audit that gives you a ranked list of savings, each with a figure and a risk note, plus tagging so your spend stays explainable afterwards.",
       },
       {
         name: "Security and access review",
         detail:
-          "IAM tidy-up, secrets handling, network exposure, and the infrastructure sections of a standard security questionnaire, answered once and reusable.",
+          "Tidy permissions, safer secrets, closed network gaps, and the infrastructure answers a security questionnaire asks for, written once and reusable.",
       },
     ],
     idealFor: [
-      "Production that was configured by hand and that nobody wants to touch",
-      "A cloud bill that grows every month with no explanation attached",
-      "Needing a second environment for a customer, a region, or a rewrite",
-      "The person who built your infrastructure having left",
+      "Your production setup was configured by hand and nobody wants to touch it",
+      "Your cloud bill grows every month with no explanation attached",
+      "You need a second environment for a customer, a region or a rewrite",
+      "The person who built your infrastructure has left",
     ],
     deliverables: [
-      "Terraform modules covering networking, compute, storage, and IAM",
-      "Remote state with locking, and plan and apply wired into pull requests",
-      "A second environment stood up from the same code, proving it reproduces",
-      "Cost breakdown with ranked, quantified savings",
-      "Runbooks for the operations your team will actually perform",
+      "Terraform code covering your networking, servers, storage and access",
+      "Remote state with locking, with changes reviewed in pull requests before they apply",
+      "A second environment built from the same code, proving it can be reproduced",
+      "A cost breakdown with ranked, quantified savings",
+      "Runbooks for the tasks your team will really perform",
     ],
     notFor: [
-      "Multi-cloud for its own sake — it doubles the operational burden and rarely pays for itself",
-      "Greenfield projects with nothing running yet; you need less than this and we would rather say so",
-      "Anyone wanting savings that quietly trade away reliability",
+      "You want multi-cloud for its own sake. It doubles the work of running things and rarely pays for itself",
+      "You are starting from nothing. You need less than this, and you will be told so",
+      "You want savings that quietly trade away reliability",
     ],
     stance: {
-      claim: "Import beats rebuild. Every time.",
+      claim: "Importing what you have beats rebuilding it.",
       detail:
-        "The instinct when adopting infrastructure as code is to rebuild it properly and cut over. That plan rarely survives contact with production. Importing what exists is less satisfying and far faster to finish, and it never needs a maintenance window to discover what you forgot.",
+        "When people adopt infrastructure as code, the instinct is to rebuild everything properly and cut over. That plan rarely survives contact with production. Importing what already exists is less glamorous and far faster to finish, and it never needs a maintenance window to find out what you forgot.",
     },
     stack: ["AWS", "Terraform", "Docker", "CloudWatch", "S3", "RDS", "IAM"],
     typicalTimeline: "1 week for an audit, 4-8 weeks for migration work",
     body: {
       problem:
-        "Infrastructure built by hand is infrastructure exactly one person can change. It cannot be reviewed, it cannot be tested, and it cannot be rebuilt if the account is lost. Every manual change widens the gap between what you believe is running and what is actually running, and you find out how wide that gap is during an incident.",
+        "Infrastructure built by hand is infrastructure exactly one person can change. It cannot be reviewed, it cannot be tested, and it cannot be rebuilt if the account is lost. Every manual change widens the gap between what you believe is running and what is really running, and you usually find out how wide that gap is during an incident.",
       approach: [
         {
-          title: "Inventory what actually exists",
+          title: "You find out what actually exists",
           detail:
-            "Audit the live account against the team's mental model of it. This step routinely surfaces resources nobody remembers creating and access wider than intended.",
+            "The live account is checked against what your team thinks is there. This step routinely turns up resources nobody remembers creating and access wider than intended.",
         },
         {
-          title: "Import rather than rebuild",
+          title: "What you have is imported, not rebuilt",
           detail:
-            "Bring existing resources into Terraform state as they are. Nothing is taken down, so the migration can proceed without a change freeze.",
+            "Existing resources are brought into Terraform as they are. Nothing is taken down, so you do not need a change freeze.",
         },
         {
-          title: "Refactor into modules",
+          title: "Repeated parts become reusable modules",
           detail:
-            "Once state reflects reality, extract the repeated parts so environments differ by configuration rather than by history.",
+            "Once the code matches reality, environments differ by configuration instead of by history.",
         },
         {
-          title: "Prove it with a second environment",
+          title: "A second environment proves it works",
           detail:
-            "Until staging has been built from the same modules as production, you have Terraform files rather than reproducible infrastructure.",
+            "Until staging has been built from the same modules as production, you have Terraform files, not rebuildable infrastructure.",
         },
         {
-          title: "Move changes into review",
+          title: "Changes move into review",
           detail:
-            "Plan on pull requests, apply on merge. Infrastructure starts getting the same scrutiny as application code.",
+            "Plans appear on pull requests and apply when approved, so infrastructure gets the same scrutiny as application code.",
         },
       ],
       outcome:
-        "Infrastructure that is reviewable, reproducible, and boring. New environments take minutes rather than weeks, drift stops being a category of incident, and the cloud bill becomes something you can explain.",
+        "Infrastructure you can review, reproduce and trust. New environments take minutes instead of weeks, drift stops being a category of incident, and your cloud bill becomes something you can explain.",
     },
   },
   {
     slug: "devops",
     name: "DevOps",
-    headline: "Release software calmly, as often as you like",
+    headline: "Release your software calmly, as often as you like",
     subtitle: "DevOps consulting — CI/CD pipelines, Kubernetes, and observability",
-    seoTitle: "DevOps & CI/CD Consulting | Manish S Consulting",
+    seoTitle: "DevOps & CI/CD Consulting | SunCrest Technology",
     metaDescription:
-      "CI/CD pipelines, containers, monitoring and release safety so your software ships often and safely. Fixed price, written scope.",
+      "Ship updates faster and with less stress: CI/CD pipelines, containers, monitoring and safe rollbacks for your team. Fixed price, written scope.",
     summary:
-      "Replace the manual release ritual with a pipeline that builds, tests, and deploys on merge — with monitoring that tells you something is wrong before a customer does.",
+      "Replace your manual release routine with a pipeline that builds, tests and deploys when you merge, and monitoring that tells you something is wrong before a customer does.",
     icon: InfinityIcon,
     capabilities: [
       {
         name: "CI/CD pipeline builds",
         detail:
-          "End-to-end pipelines in GitHub Actions, GitLab CI, or Jenkins, covering build, test, security scan, and staged deployment with approval gates where you want them.",
+          "A complete pipeline in GitHub Actions, GitLab CI or Jenkins covering build, test, security scan and staged deployment, with approval gates wherever you want them.",
       },
       {
         name: "Containers and orchestration",
         detail:
-          "Docker builds that produce identical artefacts locally and on CI, and Kubernetes or ECS where the scale genuinely calls for it.",
+          "Docker builds that behave the same on a laptop and in CI, and Kubernetes or ECS only where your scale genuinely calls for it.",
       },
       {
         name: "Monitoring and alerting",
         detail:
-          "Metrics, structured logging, and dashboards reflecting user-visible health — with alerts tied to symptoms a customer would notice, routed to someone who can act.",
+          "Dashboards that show what your users experience, with alerts tied to symptoms they would notice and sent to someone who can act.",
       },
       {
         name: "Release safety",
         detail:
-          "Health checks, automated rollback, and a runbook for the failure modes your system actually has. Fast deploys without a rollback path just break production faster.",
+          "Health checks, automatic rollback and a runbook for the failures your system really has. Fast deploys without a way back just break production faster.",
       },
       {
         name: "Delivery health check",
         detail:
-          "A fixed-price week reviewing your pipeline, infrastructure, and observability, producing findings ranked by effort against impact.",
+          "A fixed-price week reviewing your pipeline, infrastructure and monitoring, ending in findings ranked by effort against impact.",
       },
     ],
     idealFor: [
-      "Releases batched to weekly because each one is expensive",
-      "The person who runs deploys going on leave, or having just resigned",
-      "Growing a team you cannot onboard onto a process that lives in one head",
-      "Finding out about outages from customers",
+      "You batch releases weekly because each one is expensive",
+      "The person who runs your deploys is going on leave, or has just resigned",
+      "You are growing a team and cannot onboard people onto a process that lives in one head",
+      "You find out about outages from your customers",
     ],
     deliverables: [
-      "Pipeline running build, test, and deployment on merge",
-      "Environment promotion from development through staging to production",
-      "One-command rollback plus a written incident runbook",
-      "Dashboards and alerts covering user-visible health",
-      "Handover walkthrough with the people who will own it",
+      "A pipeline that builds, tests and deploys when you merge",
+      "A promotion path from development through staging to production",
+      "One-command rollback and a written incident runbook",
+      "Dashboards and alerts covering what your users see",
+      "A walkthrough for the people who will own it",
     ],
     notFor: [
-      "Teams under twenty engineers wanting Kubernetes — it is a superb answer to problems you probably do not have yet",
-      "Codebases with no tests at all; that is a real problem and a different engagement",
-      "Building a pipeline around a tool bought but never used, when a simpler one would serve better",
+      "You have a team under twenty engineers and want Kubernetes. It is a superb answer to problems you probably do not have yet",
+      "Your codebase has no tests at all. That is a real problem and a different engagement",
+      "You want a pipeline built around a tool you bought but never used, when a simpler one would serve you better",
     ],
     stance: {
-      claim: "If your deploy needs a checklist, it is not automated. It is documented.",
+      claim: "If your deploy needs a checklist, it is documented, not automated.",
       detail:
         "A runbook is a description of work a computer should be doing. Every manual step in a release is a step that gets skipped at 6pm on a Friday by someone who has done it forty times and is sure they remember it.",
     },
@@ -399,36 +402,36 @@ export const services: Service[] = [
     typicalTimeline: "3-4 weeks for a production-ready pipeline",
     body: {
       problem:
-        "Most teams do not have a deployment problem, they have a confidence problem. The pipeline works, but only one person fully understands it and only when nothing unusual happens. That uncertainty slows everything else down: releases get batched, batches get large, large releases get risky, and risky releases get postponed. The delay is not the deploy — it is the meeting about whether to deploy.",
+        "Most teams do not have a deployment problem, they have a confidence problem. The pipeline works, but only one person fully understands it, and only when nothing unusual happens. That uncertainty slows everything down: releases get batched, batches get large, large releases get risky, and risky releases get postponed. The delay is not the deploy. It is the meeting about whether to deploy.",
       approach: [
         {
-          title: "Map what actually happens",
+          title: "A real release is mapped end to end",
           detail:
-            "Shadow a real release and record every step, including the undocumented ones. Some invariably turn out to be workarounds for problems already fixed.",
+            "Every step is recorded, including the undocumented ones. Some always turn out to be workarounds for problems that were fixed long ago.",
         },
         {
-          title: "Make the build reproducible",
+          title: "Your build becomes reproducible",
           detail:
-            "Containerise so CI and a developer laptop produce the same artefact, removing a whole category of bug before pipeline work starts.",
+            "Containers make CI and a developer's laptop produce the same result, which removes a whole category of bug before pipeline work starts.",
         },
         {
-          title: "Build it in stages",
+          title: "Automation arrives in stages",
           detail:
-            "Build and test, then automated deployment to a non-production environment, then production behind whatever gate your risk appetite requires.",
+            "Build and test first, then automatic deployment to a non-production environment, then production behind whatever gate suits your appetite for risk.",
         },
         {
-          title: "Add the safety net before the speed",
+          title: "The safety net goes in before the speed",
           detail:
-            "Health checks, automated rollback, and alerting that reaches a human before it reaches a customer.",
+            "Health checks, automatic rollback and alerts that reach a person before they reach a customer.",
         },
         {
-          title: "Hand it over properly",
+          title: "Your team gets a proper handover",
           detail:
-            "Documentation your team can act on and a live walkthrough, not a wiki page that goes stale in a month.",
+            "Documentation they can act on and a live walkthrough, not a wiki page that goes stale in a month.",
         },
       ],
       outcome:
-        "Merging becomes the deploy decision. Releases stop being events, rollback stops being a research project, and how any of it works stops living in one person's head.",
+        "Merging becomes the deploy decision. Releases stop being events, rolling back stops being a research project, and how it all works stops living in one person's head.",
     },
   },
   {
@@ -436,193 +439,193 @@ export const services: Service[] = [
     name: "Automation",
     headline: "Stop paying people to move data between systems",
     subtitle: "Business process automation, system integration, and internal tools",
-    seoTitle: "Business Process Automation | Manish S Consulting",
+    seoTitle: "Business Process Automation | SunCrest Technology",
     metaDescription:
-      "Automate repetitive work with system integrations, workflows, internal tools and data pipelines for any business. Fixed price, written scope.",
+      "Get hours back every week: automate repetitive work with integrations, workflows, internal tools and data pipelines. Fixed price, written scope.",
     summary:
-      "We remove the repetitive work: connecting systems that do not talk to each other, replacing spreadsheet handoffs, and building the internal tools your team has been asking for.",
+      "Get the repetitive work off your team's plate: systems that finally talk to each other, spreadsheet handoffs replaced, and the internal tools your team has been asking for.",
     icon: Workflow,
     capabilities: [
       {
         name: "System integrations",
         detail:
-          "Get your CRM, accounting, support desk, and internal database exchanging data reliably, with retries and alerting when a sync fails rather than silent divergence.",
+          "Your CRM, accounting, support desk and database exchanging data reliably, with retries and alerts when a sync fails, instead of silent drift.",
       },
       {
         name: "Workflow automation",
         detail:
-          "Approvals, notifications, onboarding and offboarding sequences, scheduled reports — the multi-step processes currently held together by someone remembering to do them.",
+          "Approvals, notifications, onboarding and offboarding sequences and scheduled reports. The multi-step processes that currently depend on someone remembering to do them.",
       },
       {
         name: "Internal tools and dashboards",
         detail:
-          "Admin panels and operational dashboards so your team stops asking an engineer to run a query every time they need a number.",
+          "Admin panels and live dashboards, so your team stops asking an engineer to run a query every time they need a number.",
       },
       {
         name: "Data pipelines and reporting",
         detail:
-          "Scheduled extraction, transformation and loading into somewhere your team can actually query, with monitoring so you find out when a job fails.",
+          "Data collected on a schedule and loaded somewhere your team can actually query, with monitoring so you know when a job fails.",
       },
       {
         name: "Document and file workflows",
         detail:
-          "Generation, routing, storage and archival of documents that currently pass through an inbox and a shared drive.",
+          "Creating, routing, storing and archiving the documents that currently pass through an inbox and a shared drive.",
       },
     ],
     idealFor: [
-      "A team where someone spends hours each week copying between two systems",
-      "A business that has outgrown running operations from spreadsheets",
-      "Companies whose tools each work fine but do not talk to one another",
-      "Any process that breaks whenever one particular person is on leave",
+      "Someone on your team spends hours each week copying data between two systems",
+      "You have outgrown running operations from spreadsheets",
+      "Your tools each work fine but do not talk to one another",
+      "A process of yours breaks whenever one particular person is on leave",
     ],
     deliverables: [
-      "Working automation running in your environment on a schedule or a trigger",
-      "Error handling, retries, and alerting so failures surface instead of accumulating",
-      "Logging you can audit when someone asks what happened to a record",
+      "Working automation running in your own environment, on a schedule or a trigger",
+      "Error handling, retries and alerts, so failures surface instead of piling up",
+      "Logs you can audit when someone asks what happened to a record",
       "Documentation and a walkthrough so your team can adjust it without us",
       "An honest before-and-after estimate of the hours removed",
     ],
     notFor: [
-      "Processes still changing weekly — automate them once they have settled, or you will pay to rebuild",
-      "Work that happens twice a year; the automation will cost more than the work",
-      "Replacing a person's judgement rather than their typing",
+      "Your process is still changing every week. Automate it once it settles, or you will pay to rebuild",
+      "The work happens twice a year. The automation would cost more than the work",
+      "You want to replace a person's judgement, not their typing",
     ],
     stance: {
-      claim: "Automate the process you have, not the process you wish you had.",
+      claim: "Automate the process you have, not the one you wish you had.",
       detail:
-        "The most common failure is redesigning the workflow at the same time as automating it. You end up debugging two changes at once and cannot tell which one broke. Automate the current process faithfully, get it stable, then improve it deliberately.",
+        "The most common failure is redesigning the workflow at the same time as automating it. You end up debugging two changes at once and cannot tell which one broke. Automate the current process faithfully, get it stable, then improve it on purpose.",
     },
     stack: ["Python", "Go", "n8n", "REST & GraphQL APIs", "PostgreSQL", "MySQL", "AWS Lambda"],
     typicalTimeline: "1-6 weeks per workflow",
     body: {
       problem:
-        "Manual process work is invisible on any budget line. Nobody has a cost centre called \"copying rows between systems\", so it never competes for attention — it just quietly consumes hours every week, introduces errors nobody catches until month end, and stops entirely when one particular person takes leave.",
+        "Manual process work is invisible on any budget. Nobody has a cost centre called \"copying rows between systems\", so it never competes for attention. It quietly consumes hours every week, introduces errors nobody catches until month end, and stops completely when one particular person takes leave.",
       approach: [
         {
-          title: "Follow the process as it actually runs",
+          title: "Your process is followed as it really runs",
           detail:
-            "We watch it happen and write down every step, including the exceptions people handle without thinking. The exceptions are where automation projects usually fail.",
+            "Every step is written down, including the exceptions people handle without thinking. Those exceptions are where automation projects usually fail.",
         },
         {
-          title: "Count the hours honestly",
+          title: "The hours are counted honestly",
           detail:
-            "How often it runs, how long it takes, what an error costs to fix. If the numbers do not justify the build, we will say so before you spend anything.",
+            "How often it runs, how long it takes and what an error costs to fix. If the numbers do not justify the build, you hear that before you spend anything.",
         },
         {
-          title: "Automate the common path first",
+          title: "The common path is automated first",
           detail:
-            "Cover the majority case and route the rest to a person. Chasing full coverage on day one is how these projects double in cost.",
+            "The majority case is covered and the rest goes to a person. Chasing full coverage on day one is how these projects double in cost.",
         },
         {
-          title: "Make failure loud",
+          title: "Failures are loud, not silent",
           detail:
-            "Automation that fails silently is worse than the manual process, because nobody notices for weeks. Every workflow gets retries, alerting, and an audit log.",
+            "Automation that fails silently is worse than the manual process, because nobody notices for weeks. Every workflow gets retries, alerts and an audit log.",
         },
         {
-          title: "Hand over the controls",
+          title: "You keep the controls",
           detail:
-            "Your team should be able to change a threshold or a recipient without booking us. Where that is possible, we build it that way.",
+            "Your team can change a threshold or a recipient without booking us. Where that is possible, it is built that way.",
         },
       ],
       outcome:
-        "The work happens on its own, failures reach a human quickly, and the hours go back to your team. We will tell you the measured before-and-after rather than a projected one.",
+        "The work happens on its own, failures reach a person quickly and the hours go back to your team. You get the measured before-and-after, not a projection.",
     },
   },
   {
     slug: "ai",
     name: "AI Solutions",
-    headline: "AI that does a specific job, not a demo",
+    headline: "AI that does a specific job for you, not a demo",
     subtitle: "AI development — LLM integration, chatbots, document processing, RAG",
-    seoTitle: "AI & LLM Solutions for Business | Manish S Consulting",
+    seoTitle: "AI & LLM Solutions for Business | SunCrest Technology",
     metaDescription:
-      "AI assistants, document processing and LLM features built for a named problem and measured, not demos. Fixed price, written scope.",
+      "Put AI to work on a real problem: assistants, document processing and LLM features that are measured, not demos. Fixed price, written scope.",
     summary:
-      "We build AI features that solve a named problem and can be measured: assistants trained on your own documentation, document processing that removes manual data entry, and LLM features inside your existing product.",
+      "AI features that solve a named problem and can be measured: an assistant that answers from your own documents, document processing that removes manual data entry, or an AI feature inside the product you already run.",
     icon: Sparkles,
     capabilities: [
       {
         name: "Internal knowledge assistants",
         detail:
-          "A chatbot that answers from your own documentation, policies, and past tickets rather than from the open internet — retrieval-augmented so answers cite their source and can be checked.",
+          "A chatbot that answers from your own documentation, policies and past tickets instead of the open internet. Answers cite their source, so you can check them.",
       },
       {
         name: "Document processing",
         detail:
-          "Extract structured data from invoices, contracts, forms, and PDFs, with a confidence threshold and a human review queue for anything below it.",
+          "Structured data pulled from invoices, contracts, forms and PDFs, with a confidence threshold and a review queue for anything the system is unsure about.",
       },
       {
         name: "LLM features in your product",
         detail:
-          "Summarisation, classification, drafting, and search built into software you already run, with cost controls and fallbacks so a provider outage does not take your product down.",
+          "Summaries, classification, drafting and search inside software you already run, with cost controls and fallbacks so a provider outage does not take your product down.",
       },
       {
         name: "Customer support automation",
         detail:
-          "Triage and first-line responses that hand off cleanly to a person, with the handoff point tuned so customers are not trapped in a loop.",
+          "Triage and first-line replies that hand over cleanly to a person, tuned so your customers are never trapped in a loop.",
       },
       {
         name: "AI readiness assessment",
         detail:
-          "A fixed-price review of where AI would genuinely pay for itself in your business, and — as often as not — where it would not.",
+          "A fixed-price review of where AI would genuinely pay for itself in your business and, as often as not, where it would not.",
       },
     ],
     idealFor: [
-      "A team drowning in a manual process that is mostly reading and re-typing",
-      "A product that needs an AI feature that actually ships, not a prototype",
-      "A business fielding the same customer questions hundreds of times a month",
-      "Anyone who has been quoted a large number for something that should be small",
+      "Your team is drowning in a manual process that is mostly reading and re-typing",
+      "Your product needs an AI feature that really ships, not a prototype",
+      "You answer the same customer questions hundreds of times a month",
+      "You have been quoted a large number for something that should be small",
     ],
     deliverables: [
-      "Working feature deployed into your environment, not a notebook",
-      "Evaluation set and accuracy measurements, so \"is it good enough\" has an answer",
-      "Cost-per-request modelling and usage limits before it goes live",
-      "Fallback behaviour for provider outages, rate limits, and low-confidence results",
-      "Documentation covering how it works, what it costs, and how to change the prompts",
+      "A working feature deployed in your environment, not a notebook",
+      "A test set and accuracy measurements, so \"is it good enough\" has an answer",
+      "Cost per request modelled, with usage limits in place before launch",
+      "Fallback behaviour for provider outages, rate limits and low-confidence results",
+      "Documentation on how it works, what it costs and how to change the prompts",
     ],
     notFor: [
-      "Training foundation models from scratch — almost nobody needs this, and we will say so",
-      "\"Add AI\" with no problem attached; we will help you find the problem first, but we will not skip that step",
-      "Use cases where a wrong answer is unacceptable and there is no way to put a human in the loop",
+      "You want a foundation model trained from scratch. Almost nobody needs this, and you will be told so",
+      "You want \"add AI\" with no problem attached. You get help finding the problem first, and that step is never skipped",
+      "A wrong answer is unacceptable and there is no way to put a human in the loop",
     ],
     stance: {
-      claim: "Most AI projects fail on evaluation, not on modelling.",
+      claim: "Most AI projects fail on measurement, not on the model.",
       detail:
-        "Getting a plausible answer out of a language model takes an afternoon. Knowing whether it is right often enough to put in front of customers takes an evaluation set, a threshold, and a fallback. Teams that skip that part ship something impressive in a demo and unusable in production.",
+        "Getting a plausible answer out of a language model takes an afternoon. Knowing whether it is right often enough to put in front of your customers takes a test set, a threshold and a fallback. Projects that skip that part ship something impressive in a demo and unusable in production.",
     },
     stack: ["Python", "Claude", "OpenAI", "Azure AI", "LangChain", "Vector databases", "FastAPI"],
     typicalTimeline: "2-8 weeks depending on scope",
     body: {
       problem:
-        "AI is easy to buy and hard to get value from. The gap is rarely the model — it is that nobody defined what success looks like, so there is no way to tell whether the thing works. Projects stall in an endless prototype phase, or worse, ship without evaluation and quietly give customers wrong answers with total confidence.",
+        "AI is easy to buy and hard to get value from. The gap is rarely the model. It is that nobody defined what success looks like, so there is no way to tell whether the thing works. Projects stall in an endless prototype phase or, worse, ship without testing and quietly give customers wrong answers with total confidence.",
       approach: [
         {
-          title: "Start from the process, not the technology",
+          title: "It starts from your process, not the technology",
           detail:
-            "We look at the actual manual work you want removed and how often it happens. If the honest answer is that a database query or a form would solve it better, that is what we will tell you.",
+            "The manual work you want gone and how often it happens. If a database query or a form would solve it better, that is what you will be told.",
         },
         {
-          title: "Define what good looks like before building",
+          title: "You define what good looks like first",
           detail:
-            "An evaluation set of real examples with known correct answers. Without it, \"it seems to work\" is the only quality bar available, and it is not one you can defend to a customer.",
+            "A test set of real examples with known correct answers. Without it, \"it seems to work\" is the only quality bar, and it is not one you can defend to a customer.",
         },
         {
-          title: "Build the narrow version first",
+          title: "The narrow version goes live first",
           detail:
-            "One use case, deployed, measured, in front of real users. Breadth comes after something is demonstrably working, not before.",
+            "One use case, deployed, measured and in front of real users. Breadth comes after something is demonstrably working.",
         },
         {
-          title: "Design for being wrong",
+          title: "It is designed for being wrong",
           detail:
-            "Confidence thresholds, human review queues, graceful degradation when a provider is down. The failure path matters more than the happy path in anything customer-facing.",
+            "Confidence thresholds, human review queues and graceful behaviour when a provider is down. In anything customer-facing, the failure path matters more than the happy path.",
         },
         {
-          title: "Control the cost before launch",
+          title: "Your costs are controlled before launch",
           detail:
-            "Per-request cost modelled against realistic volume, with caching and limits in place. AI features that get expensive at scale are a business problem, not a technical one.",
+            "Per-request cost modelled against realistic volume, with caching and limits in place. An AI feature that gets expensive at scale is a business problem, not just a technical one.",
         },
       ],
       outcome:
-        "A feature doing a specific job, with numbers showing how well it does it and what it costs to run. You can decide whether to expand it on evidence rather than on enthusiasm.",
+        "A feature doing a specific job, with numbers showing how well it does it and what it costs to run. You can decide whether to expand it on evidence, not enthusiasm.",
     },
   },
 ];

@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { seo, breadcrumbLd } from "@/lib/seo";
 import { pageLd } from "@/lib/schema";
-import { useState, type FormEvent } from "react";
+import { createElement, useState, type FormEvent } from "react";
 import { Mail, MessageCircle, MapPin, Clock, Send } from "lucide-react";
 import { site } from "@/content/site";
 import { services } from "@/content/services";
@@ -9,17 +9,19 @@ import { whatINeed, processSteps } from "@/content/process";
 import { faqsIn } from "@/content/faq";
 import { Magnetic, Reveal, TiltCard } from "@/components/fx/motion";
 import { PageHero, Section, SectionTitle } from "@/components/site/Layout";
+import { stepIcons } from "@/components/site/icons";
+import hero from "@/assets/hero.webp";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/contact")({
   head: () =>
     seo({
-      title: "Contact Manish S Consulting | Book a Free 30-Minute Call",
+      title: "Contact SunCrest Technology | Book a Free 30-Minute Call",
       description:
-        "Tell Manish S Consulting about your project. Free 30-minute discovery call for AI, automation, web, cloud and DevOps work. Replies within 24 hours on weekdays.",
+        "Tell us what you need help with. Get a free 30-minute call, an honest view on whether we can help, and a reply within 24 hours on weekdays.",
       path: "/contact",
       jsonLd: [
-        pageLd("ContactPage", "Contact Manish S Consulting", "/contact", "Book a free 30-minute discovery call with Manish S Consulting."),
+        pageLd("ContactPage", "Contact SunCrest Technology", "/contact", "Book a free 30-minute discovery call with SunCrest Technology."),
         breadcrumbLd([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }]),
       ],
     }),
@@ -52,7 +54,7 @@ function ContactPage() {
         body: JSON.stringify({
           access_key: key,
           subject: `Project enquiry — ${d.get("name")}`,
-          from_name: "Manish S Consulting website",
+          from_name: "SunCrest Technology website",
           name: d.get("name"),
           company: d.get("company"),
           service: d.get("service"),
@@ -72,8 +74,9 @@ function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
+        image={hero}
         title={<>Let's talk about <span className="font-serif italic text-gradient">your problem.</span></>}
-        intro="Whether you are one person with one problem or a team with a roadmap, a few lines are enough. If we're not the right fit, we'll say so and point you to someone who is."
+        intro="Whether you are one person with one problem or a team with a roadmap, a few lines are enough. If we are not the right fit, you will hear it straight away, along with a pointer to someone who is."
       />
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr]">
@@ -84,7 +87,7 @@ function ContactPage() {
               <label className="space-y-2 text-sm">Company<input name="company" className={field} /></label>
             </div>
             <div className="grid gap-5 sm:grid-cols-2">
-              <label className="space-y-2 text-sm">Service
+              <label className="space-y-2 text-sm">What do you need?
                 <select name="service" className={field}>
                   {services.map((s) => <option key={s.slug}>{s.name}</option>)}
                   <option>Not sure yet</option>
@@ -96,20 +99,20 @@ function ContactPage() {
                 </select>
               </label>
             </div>
-            <label className="block space-y-2 text-sm">Tell us about your project<textarea required name="message" rows={6} className={field} placeholder="Your goals, current setup, timeline and any challenges you are facing." /></label>
+            <label className="block space-y-2 text-sm">What are you trying to fix or build?<textarea required name="message" rows={6} className={field} placeholder="What you want to achieve, what you have now, your timeline and anything that is getting in the way." /></label>
             <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
             <Magnetic>
               <button disabled={status === "sending"} className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-primary-foreground transition hover:shadow-glow disabled:opacity-60">
-                {status === "sending" ? "Sending…" : "Send enquiry"} <Send className="size-4" />
+                {status === "sending" ? "Sending…" : "Get my free plan"} <Send className="size-4" />
               </button>
             </Magnetic>
-            {status === "sent" && <p className="text-sm text-primary">Thanks — your enquiry is in. We'll reply within 24 hours on weekdays.</p>}
-            {status === "mailto" && <p className="text-sm text-primary">Your email app should open with the message ready — just hit send.</p>}
+            {status === "sent" && <p className="text-sm text-primary">Thanks, your enquiry is in. You will hear back within 24 hours on weekdays.</p>}
+            {status === "mailto" && <p className="text-sm text-primary">Your email app should open with your message ready. Just press send.</p>}
             {status === "error" && <p className="text-sm text-destructive">Something went wrong. Please try again or email {site.email} directly.</p>}
           </form>
           </Reveal>
           <aside className="space-y-4">
-            <h2 className="eyebrow">Other ways to reach us</h2>
+            <h2 className="eyebrow">Prefer another way?</h2>
             {[
               { icon: Mail, label: "Email", value: site.email, href: `mailto:${site.email}` },
               { icon: MessageCircle, label: "WhatsApp", value: "Chat on WhatsApp", href: site.whatsappUrl },
@@ -125,7 +128,7 @@ function ContactPage() {
             ))}
             <Reveal delay={0.4}>
             <div className="rounded-2xl border border-border p-6">
-              <p className="eyebrow">To get started we'll need</p>
+              <p className="eyebrow">To get you started, it helps to have</p>
               <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                 {whatINeed.map((w) => <li key={w} className="flex gap-2"><span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />{w}</li>)}
               </ul>
@@ -139,7 +142,7 @@ function ContactPage() {
         <Section>
           <SectionTitle
             eyebrow="What happens next"
-            title={<>After you send your message, <span className="font-serif italic text-gradient">here is what to expect.</span></>}
+            title={<>After you send your message, <span className="font-serif italic text-gradient">here is what happens.</span></>}
             intro={`${site.responseTime}. Every engagement follows the same four steps, whether you are one person with one problem or a team with a roadmap.`}
           />
           <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -147,7 +150,10 @@ function ContactPage() {
               <li key={s.step}>
                 <Reveal delay={i * 0.08}>
                   <div className="h-full rounded-2xl border border-border bg-card p-6">
-                    <p className="font-mono text-xs text-primary">{s.step} · {s.duration}</p>
+                    <div className="flex items-center justify-between">
+                      <p className="font-mono text-xs text-primary">{s.step} · {s.duration}</p>
+                      <span className="grid size-9 place-items-center rounded-lg bg-primary/10 text-primary">{createElement(stepIcons[i]!, { className: "size-4" })}</span>
+                    </div>
                     <h3 className="mt-3 font-display text-lg font-semibold">{s.title}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.detail}</p>
                   </div>

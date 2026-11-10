@@ -1,55 +1,56 @@
 /**
- * Headline strip. These are commitments plus one real, measured result — not
- * credential counts or invented client numbers. A metric that says
- * "50+ projects delivered" is the first thing a serious buyer checks.
+ * Headline strip. Each tile is something the visitor gets, stated as a
+ * commitment, never as a credential count or an invented client number.
+ * A metric like "50+ projects delivered" is the first thing a serious buyer checks.
  */
 export const results = [
   {
     value: "Any",
-    label: "Size of client",
-    detail: "Individuals, small businesses and larger organisations",
+    label: "Size of project",
+    detail: "From a one-person site to a company-wide migration",
   },
   {
-    value: "6",
-    label: "Service areas, one point of contact",
-    detail: "No vendor coordination overhead",
+    value: "1",
+    label: "Expert for all six services",
+    detail: "No juggling vendors or repeating yourself",
   },
   {
     value: "Fixed",
     label: "Price, agreed up front",
-    detail: "If it runs long, that is our problem",
+    detail: "If it runs long, the extra cost is not yours",
   },
   {
     value: "24h",
-    label: "Response on weekdays",
-    detail: "You deal with the engineer, not an account manager",
+    label: "Reply on weekdays",
+    detail: "You deal directly with the person doing the work",
   },
 ];
 
 /**
- * Why choose a small consultancy. These lean into being lean rather than
- * pretending to be large — the honest version is also the more persuasive one.
+ * What the visitor can count on. Each item leads with the benefit to them; the
+ * mechanism comes second. Honest about being small, because that is a reason
+ * to choose it, not something to hide.
  */
 export const differentiators = [
   {
-    title: "We build it and we run it",
+    title: "One expert from start to finish",
     detail:
-      "Plenty of providers build something and hand it over. We also look after the hosting, the delivery pipeline, the monitoring and the support, which means nobody gets to blame the other side when something breaks.",
+      "The person you brief is the person who builds and looks after your project. There are no account managers and no hand-offs, so nothing gets lost in translation and nobody else to blame when something breaks.",
   },
   {
-    title: "You talk to the person doing the work",
+    title: "You know the price before you start",
     detail:
-      "No account managers relaying requirements to a delivery team you never meet. Deliberately small, and it stays that way because it is the reason the work is good.",
+      "You get a fixed number in writing before any work begins. If the estimate was wrong, that is our cost to absorb, not yours.",
   },
   {
-    title: "Fixed prices, written scope",
+    title: "It keeps working after launch",
     detail:
-      "You get a number before anything starts. If the estimate was wrong, that is ours to absorb — the risk of getting it wrong sits with the people doing the estimating.",
+      "Hosting, release process, monitoring and support are part of the picture, so you are not left holding something that only worked on launch day.",
   },
   {
-    title: "Handover is part of the job",
+    title: "You can walk away at any time",
     detail:
-      "Documentation and a walkthrough at the end of every engagement, plus two weeks of support. If you still need us afterwards, it should be because you want to.",
+      "Every project ends with documentation, a walkthrough and two weeks of free support. If you come back for more, it should be because you want to, not because you have to.",
   },
 ];
 

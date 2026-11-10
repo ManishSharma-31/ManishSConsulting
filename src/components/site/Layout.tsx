@@ -12,10 +12,16 @@ export function Header() {
   return (
     <header className="glass fixed inset-x-0 top-0 z-50 border-b border-border">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:px-8">
-        <Link to="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <img src="/logo-88.webp" alt="Manish S Consulting logo" width={44} height={44} className="size-11 rounded-lg object-cover" />
-          <span className="font-display text-xl font-semibold tracking-tight md:text-2xl">
-            Manish S<span className="text-muted-foreground"> Consulting</span>
+        <Link to="/" aria-label="SunCrest Technology, home" className="flex items-center gap-3" onClick={() => setOpen(false)}>
+          <img src="/logo-88.webp" alt="" width={44} height={44} className="size-11 rounded-lg object-cover" />
+          {/* Wordmark styled after the logo: bold slanted caps, with a spaced-out "Technology" between lime rules. */}
+          <span className="flex flex-col leading-none" aria-hidden="true">
+            <span className="inline-block -skew-x-12 font-display text-[1.65rem] font-bold tracking-tight text-white md:text-[1.9rem]">SunCrest</span>
+            <span className="mt-1.5 flex items-center gap-2 text-[0.55rem] uppercase tracking-[0.42em] text-foreground/90 md:text-[0.62rem]">
+              <span className="h-px flex-1 bg-primary" />
+              Technology
+              <span className="h-px flex-1 bg-primary" />
+            </span>
           </span>
         </Link>
         <nav className="hidden items-center gap-1 md:flex">
@@ -73,9 +79,9 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-4 md:px-8">
         <div className="md:col-span-2">
           <p className="font-display text-3xl font-semibold leading-tight">
-            Build it properly.
+            Technology that works.
             <br />
-            <span className="font-serif italic text-gradient">Run it calmly.</span>
+            <span className="font-serif italic text-gradient">Support that answers.</span>
           </p>
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">{site.description}</p>
           <div className="mt-6 flex gap-3">
@@ -184,10 +190,10 @@ export function CtaBand() {
           <div>
             <p className="eyebrow">Free discovery call</p>
             <h2 className="mt-4 font-display text-4xl font-semibold leading-tight md:text-6xl">
-              Got a problem that keeps <span className="font-serif italic text-gradient">sliding to next sprint?</span>
+              Got a problem that keeps <span className="font-serif italic text-gradient">sliding down the list?</span>
             </h2>
             <p className="mt-5 max-w-xl text-muted-foreground">
-              A free 30-minute call. Tell us what you're working on and we'll outline the best approach, a realistic timeline and an estimated budget.
+              A free 30-minute call. Tell us what you are working on and you will leave with a clear approach, a realistic timeline and an estimated budget.
             </p>
           </div>
           <div className="flex flex-col gap-3 md:items-end">
@@ -196,7 +202,7 @@ export function CtaBand() {
                 to="/contact"
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 font-semibold text-primary-foreground transition hover:shadow-glow"
               >
-                Start a conversation <ArrowUpRight className="size-5" />
+                Get my free plan <ArrowUpRight className="size-5" />
               </Link>
             </Magnetic>
             <span className="text-sm text-muted-foreground">{site.responseTime}</span>

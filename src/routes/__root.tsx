@@ -16,6 +16,7 @@ import serifItalicFont from "@fontsource/instrument-serif/files/instrument-serif
 import monoFont from "@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2?url";
 import headingFont from "@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url";
 import { Header, Footer } from "@/components/site/Layout";
+import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { CursorGlow, ScrollProgress } from "@/components/fx/motion";
 
 function NotFoundComponent() {
@@ -83,8 +84,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Manish S Consulting | IT Consulting & Technology Solutions" },
-      { name: "description", content: "Independent IT consulting for businesses of every size and individuals: web, software, cloud, automation, AI and everyday IT support." },
+      { title: "SunCrest Technology | IT Consulting & Technology Solutions" },
+      { name: "description", content: "Get your IT sorted by one expert: websites, software, cloud, automation, AI and everyday IT support, for individuals and businesses of every size." },
       { name: "author", content: "Manish Sharma" },
       { name: "theme-color", content: "#0a0a0a" },
       ...(import.meta.env["VITE_GOOGLE_SITE_VERIFICATION"]
@@ -93,9 +94,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       ...(import.meta.env["VITE_BING_SITE_VERIFICATION"]
         ? [{ name: "msvalidate.01", content: import.meta.env["VITE_BING_SITE_VERIFICATION"] as string }]
         : []),
-      { name: "application-name", content: "Manish S Consulting" },
-      { name: "apple-mobile-web-app-title", content: "Manish S Consulting" },
-      { property: "og:site_name", content: "Manish S Consulting" },
+      { name: "application-name", content: "SunCrest Technology" },
+      { name: "apple-mobile-web-app-title", content: "SunCrest Technology" },
+      { property: "og:site_name", content: "SunCrest Technology" },
       { property: "og:locale", content: "en" },
       { name: "twitter:card", content: "summary_large_image" },
       // { name: "twitter:site", content: "@ManishSharma31" },
@@ -165,6 +166,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <Footer />
+      <WhatsAppButton />
     </QueryClientProvider>
   );
 }

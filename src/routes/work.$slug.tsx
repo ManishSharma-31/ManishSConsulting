@@ -20,9 +20,9 @@ export const Route = createFileRoute("/work/$slug")({
   },
   head: ({ loaderData }) => {
     const p = loaderData ? getProject(loaderData.slug) : undefined;
-    if (!p) return { meta: [{ title: "Case study not found | Manish S Consulting" }, { name: "robots", content: "noindex" }] };
+    if (!p) return { meta: [{ title: "Case study not found | SunCrest Technology" }, { name: "robots", content: "noindex" }] };
     return seo({
-      title: `${p.title} | Manish S Consulting`.length <= 65 ? `${p.title} | Manish S Consulting` : p.title,
+      title: `${p.title} | SunCrest Technology`.length <= 65 ? `${p.title} | SunCrest Technology` : p.title,
       description: clip(p.summary),
       path: `/work/${p.slug}`,
       type: "article",
@@ -49,9 +49,9 @@ function ProjectPage() {
       <Section>
         <p className="mb-8 rounded-xl border border-dashed border-border px-4 py-3 text-sm text-muted-foreground">
           {p.kind === "project"
-            ? "Project: a product designed, built and deployed by Manish Sharma. The strip below lists facts about the product. No customers, usage or results are claimed."
+            ? "Project: a live product you can try, designed, built and deployed by Manish Sharma. The strip below lists facts about the product. No customers, usage or results are claimed."
             : isWorkedExample(p)
-              ? "Worked example: a representative scenario showing how we approach this kind of work. It describes no real client, and the strip below lists properties of the approach, not results."
+              ? "Worked example: a scenario showing how work like this goes for you. It describes no real client, and the strip below lists properties of the approach, not results."
               : "Case study: delivered in a previous role. Company details are confidential, and the figure shown is the one that was measured."}
         </p>
         {p.kind === "project" && (
@@ -77,9 +77,9 @@ function ProjectPage() {
         </div>
         <div className="mt-16 grid gap-12 lg:grid-cols-[1.4fr_1fr]">
           <div>
-            <p className="eyebrow">{isWorkedExample(p) ? "The scenario" : "The challenge"}</p>
+            <p className="eyebrow">{isWorkedExample(p) ? "Does this sound familiar?" : "The problem"}</p>
             <p className="mt-4 text-xl leading-relaxed">{p.challenge}</p>
-            <p className="eyebrow mt-14">{p.kind === "project" ? "How it is built" : isWorkedExample(p) ? "How it is done" : "What was done"}</p>
+            <p className="eyebrow mt-14">{p.kind === "project" ? "How it works" : isWorkedExample(p) ? "How it goes for you" : "What changed"}</p>
             <ol className="mt-6 space-y-8 border-l border-border pl-8">
               {p.approach.map((a, i) => (
                 <li key={a.title} className="relative">
@@ -95,7 +95,7 @@ function ProjectPage() {
           <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
             <Reveal delay={0.1}>
             <div className="rounded-2xl border border-border bg-card p-6">
-              <h3 className="font-display text-lg font-semibold">{p.kind === "project" ? "What it does" : isWorkedExample(p) ? "What you end up with" : "Results"}</h3>
+              <h3 className="font-display text-lg font-semibold">{p.kind === "project" ? "What you get" : isWorkedExample(p) ? "What you end up with" : "Results"}</h3>
               <ul className="mt-4 space-y-3">
                 {p.results.map((r) => <li key={r} className="flex gap-2.5 text-sm"><Check className="mt-0.5 size-4 shrink-0 text-primary" />{r}</li>)}
               </ul>
@@ -120,7 +120,7 @@ function ProjectPage() {
             )}
             {service && (
               <Link to="/services/$slug" params={{ slug: service.slug }} className="block rounded-2xl border border-primary/30 bg-accent p-6 transition hover:border-primary">
-                <p className="eyebrow">Related service</p>
+                <p className="eyebrow">Get help like this</p>
                 <p className="mt-2 font-display text-lg font-semibold">{service.name} →</p>
               </Link>
             )}
